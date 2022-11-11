@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    background-image: url('https://user-images.githubusercontent.com/101679628/201384874-4fb703bd-76d6-4e83-ad87-14194cc6cc91.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+@media only screen and (max-width: 1113px ) {
+    body {
+        background-image: url('https://user-images.githubusercontent.com/101679628/201384874-4fb703bd-76d6-4e83-ad87-14194cc6cc91.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+    }
+   
+    h1, p{
+        color: #F8C365;
+        font-family: 'Inter', sans-serif;
+    }
+    #root .logo{
+        width: 20vw;
+        height: 30vh;
+    }
+}
