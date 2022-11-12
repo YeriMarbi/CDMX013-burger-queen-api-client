@@ -6,20 +6,53 @@ body {
    background-size: cover;
 }
 
-@media only screen and (max-width: 1113px ) {
+@media (min-width: 700px) and (orientation: landscape) {
     body {
         background-image: url('https://user-images.githubusercontent.com/101679628/201384874-4fb703bd-76d6-4e83-ad87-14194cc6cc91.png');
         background-repeat: no-repeat;
         background-size: cover;
-        display: flex;
+        /* display: flex; */
     }
    
     h1, p{
         color: #F8C365;
         font-family: 'Inter', sans-serif;
     }
-    #root .logo{
-        width: 20vw;
-        height: 30vh;
+    .login{
+        display: flex;
+        flex-direction: row;
+        margin:center;
+        width: 200vw;
+        height: 100vh;
     }
+    .login >*:first-child {
+        align-self: center;
+        justify-self: center;
+        margin: center;
+    }
+    .logo{
+        width: 30vw;
+        height: 40vh;
+        background-image: url(/Users/dianaampudiapascual/Developer/Laboratoria/CDMX013-burger-queen-api-client/my-app/src/image/opciona.png);
+        background-repeat: no-repeat;
+        background-size:50%;
+        
+    }
+
+    .buttonLogin {
+        background-color: #C77136;
+        border: none;
+        border-radius: 1vh;
+        width: 13vw;
+        height: 3vh;
+        font-family: 'Inter', sans-serif;
+        color: rgb(255, 255, 255);
+
+    }
+
+    .welcome  {
+        width: 60vw;
+        
+    }
+
 }
