@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./login.css";
-// import {opciona} from "./image/opciona.png"
 
 const Welcome = () => {
     return <div className='welcome'>
