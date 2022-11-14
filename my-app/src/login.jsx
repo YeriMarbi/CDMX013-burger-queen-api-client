@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./login.css";
-// import {opciona} from "./image/opciona.png"
 
 const Welcome = () => {
     return <div className='welcome'>
@@ -16,6 +15,7 @@ const Welcome = () => {
 
 const Logo = () => {
     return <div className='logo'>
+        <img src="https://user-images.githubusercontent.com/101679628/201446330-4a95197e-4311-4ec2-88d2-401155646188.png" alt="BurgerQueenLogo" />
         </div>
 };
 
