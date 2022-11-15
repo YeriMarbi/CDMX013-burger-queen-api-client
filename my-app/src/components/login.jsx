@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./login.css";
-import { useState } from "react";
+import { useState} from "react";
 import { Link } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+
 
 const Welcome = () => {
     const [email, setEmail] = useState('');
     const [miLogin, setLogin] = useState('false')
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -16,15 +19,23 @@ const Welcome = () => {
         setPassword(e.target.value)
     }
     const handleApi = (e) => {
-        if (email === 'yeri@admin.com' || password === '123') {
-            console.log(setLogin('true'));
-        } else {
-            setLogin('false');
+        // if (email === 'Delilah@hotmail.com' || password === 'YNeRDab4Na47tZJ') {
+        //     // navigate('admin')
+        //     console.log(setLogin('true'));
+        // } else {
+        //     // setLogin('false');
+        //     console.log(setLogin)
 
-        }
+        // }
         console.log({ email, password });
         axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/users').then(result => {
-            console.log(result.data);
+            const data = result.data;
+            data.forEach(element => {
+                if (element.area === 'Administrador' && element.email  === email) {
+                    console.log(element)
+                    navigate('admin')
+                }
+            });
         })
 
     }
@@ -38,14 +49,10 @@ const Welcome = () => {
         <p className='messageError'></p>
         <button onClick={handleApi} className='buttonLogin'>Iniciar Sesión</button>
         {/* {miLogin === 'true' && <Link to="/Admin" ></Link>} */}
+        <Logo/>
     </div>
 };
 
-const Admin = () => {
-    return <div className='logo'>
-        <h1>Hola Mundo</h1>
-    </div>
-};
 
 const Logo = () => {
     return <div className='logo'>
