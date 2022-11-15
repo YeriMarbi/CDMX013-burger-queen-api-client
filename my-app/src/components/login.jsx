@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./login.css";
 import { useState } from "react";
+import { Link } from 'react-router';
 import axios from "axios";
 
 const Welcome = () => {
@@ -36,7 +37,7 @@ const Welcome = () => {
         <input value={password} onChange={handlePassword} type={'password'} /> <br />
         <p className='messageError'></p>
         <button onClick={handleApi} className='buttonLogin'>Iniciar Sesión</button>
-        {miLogin === 'true' && <Admin />}
+        {/* {miLogin === 'true' && <Link to="/Admin" ></Link>} */}
     </div>
 };
 
