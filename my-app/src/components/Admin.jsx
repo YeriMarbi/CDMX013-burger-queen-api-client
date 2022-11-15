@@ -1,7 +1,15 @@
 import React from 'react';
+// import  DataBQ from "./AdminTable";
+import { TableBasic } from './AdminTable';
 
-const Admin = () =>{
-    return <h1>Lista de productos</h1>
+const Admin = () => {
+    return (
+        <div>
+            <h1>Lista de productos</h1>
+            {/* <DataBQ /> */}
+            <TableBasic />
+        </div>
+    )
 }
 
 export default Admin
