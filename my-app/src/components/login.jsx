@@ -53,8 +53,10 @@ const Logo = () => {
     </div>
 };
 
-export const login = ReactDOM.createRoot(document.getElementById('root'));
-login.render(<div className='login'>
-    <Welcome></Welcome>
-    <Logo></Logo>
-</div>);
+// const login = ReactDOM.createRoot(document.getElementById('root'));
+// login.render(<div className='login'>
+//     <Welcome></Welcome>
+//     <Logo></Logo>
+// </div>);
+
+export default Welcome
