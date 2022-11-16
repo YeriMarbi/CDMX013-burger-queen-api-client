@@ -66,8 +66,8 @@ body {
     .welcome section {
         margin: 0 0 0 75vw;
     }
-    #Admin{
-        width:200vw;
-        background-color: aquamarine;
+    .error{
+       background-color: brown;
     }
+
 }

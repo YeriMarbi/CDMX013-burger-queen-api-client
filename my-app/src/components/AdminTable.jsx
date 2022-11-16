@@ -12,7 +12,7 @@ export const Table = () => {
     const getData = async () => {
         await axios.get(URL).then(result => {
             const data = result.data;
-            console.log(data);
+            // console.log(data);
             setUsers(data);
         }
         )
@@ -43,11 +43,11 @@ export const Table = () => {
 
     return (
         <div className='Table'>
-            <h1>HOLa</h1>
-            <DataTable
+            <h1>En contrucción...</h1>
+            {/* <DataTable
             columns={columns}
             data={users}
-            />
+            /> */}
         </div>
     )
 }
