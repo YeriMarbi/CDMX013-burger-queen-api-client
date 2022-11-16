@@ -46,8 +46,11 @@ const Welcome = () => {
                             console.log('Mesas');
                         }
                     } else {
+                       
                         changeCredenciales(true)
                         errorCredenciales(true)
+                        errorInput(false)
+                        changeError(false)
                     }
                 });
             })
@@ -70,10 +73,10 @@ const Welcome = () => {
             <button onClick={handleApi} className='buttonLogin'>Iniciar Sesión</button>
             <br />
             {errorInput && <div className='error'>
-                <p><b>Error:</b>Rellena los campos</p>
+                <p><b>Error: </b> Rellena los campos</p>
             </div>}
             {errorCredenciales && <div className='error'>
-                <p><b>Error:</b>Credenciales Invalidas</p>
+                <p><b>Error: </b> Credenciales Invalidas</p>
             </div>}
         </section>
         <Logo />
