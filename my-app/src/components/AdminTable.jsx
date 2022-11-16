@@ -43,11 +43,10 @@ export const Table = () => {
 
     return (
         <div className='Table'>
-            <h1>En contrucción...</h1>
-            {/* <DataTable
+            <DataTable
             columns={columns}
             data={users}
-            /> */}
+            />
         </div>
     )
 }
