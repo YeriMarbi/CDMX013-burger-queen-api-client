@@ -23,6 +23,7 @@ body {
     h1 {
         font-size: 5vw;
         text-align: center;
+        margin: 1vh;
     }
 
     .logo img {
@@ -67,7 +68,14 @@ body {
         margin: 0 0 0 75vw;
     }
     .error{
-       background-color: brown;
+       background-color: rgba(212, 157, 164, 0.59);
+       border-radius: 0.1vw;
+       text-align: center;
+       padding: 1.3vh;
+       margin: 0 0 1.5vh 0vh;
+    }
+    .iconoError{
+        margin: 0 1vw 0 0;
     }
 
 }
