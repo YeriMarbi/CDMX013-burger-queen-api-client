@@ -1,56 +1,55 @@
-// import axios from 'axios'
-// import * as React from 'react';
+ import axios from 'axios'
+ import * as React from 'react';
 // import MUIDataTable from "mui-datatables"
-// import { useState, useEffect } from 'react';
-// import DataTable from 'react-data-table-component'
+ import { useState, useEffect } from 'react';
+ import DataTable from 'react-data-table-component'
 // import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-// export const Table = () => {
-//     const [users, setUsers] = useState([])
-//     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
+export const Table = () => {
+    const [users, setUsers] = useState([])
+    const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
-//     const getData = async () => {
-//         await axios.get(URL).then(result => {
-//             const data = result.data;
-//             console.log(data);
-//             setUsers(data);
-//         }
-//         )
-//     };
+    const getData = async () => {
+        await axios.get(URL).then(result => {
+            const data = result.data;
+            console.log(data);
+            setUsers(data);
+        }
+        )
+    };
 
-//     useEffect(() => {
-//         getData()
-//     }, []);
+    useEffect(() => {
+        getData()
+    }, []);
 
-//     const columns = [
-//         {
-//             name: 'name',
-//             selector: row => row.name
-//         },
-//         {
-//             name: 'area',
-//             selector: row => row.area
-//         },
-//         {
-//             name: 'e-mail',
-//             selector: row => row.email
-//         },
-//         {
-//             name: 'password',
-//             selector: row => row.password
-//         },
-//     ]
+    const columns = [
+        {
+            name: 'name',
+            selector: row => row.name
+        },
+        {
+            name: 'area',
+            selector: row => row.area
+        },
+        {
+            name: 'e-mail',
+            selector: row => row.email
+        },
+        {
+            name: 'password',
+            selector: row => row.password
+        },
+    ]
 
-//     return (
-//         <div className='Table'>
-//             <h1>En contrucción...</h1>
-//             {/* <DataTable
-//             columns={columns}
-//             data={users}
-//             /> */}
-//         </div>
-//     )
-// }
+    return (
+        <div className='Table'>
+            <DataTable
+            columns={columns}
+            data={users}
+            />
+        </div>
+    )
+}
 
 
 // export const TableBasic = () => {
@@ -132,4 +131,4 @@
 //     });
 // }
 
-// export default Table
+ export default Table

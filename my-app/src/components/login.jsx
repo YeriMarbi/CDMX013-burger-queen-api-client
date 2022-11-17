@@ -20,7 +20,7 @@ const Welcome = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-
+   
     const handleApi = (e) => {
         e.preventDefault()
 
@@ -49,8 +49,8 @@ const Welcome = () => {
                        
                         changeCredenciales(true)
                         errorCredenciales(true)
-                        errorInput(false)
-                        changeError(false)
+                        // errorInput(false)
+                        // changeError(false)
                     }
                 });
             })
