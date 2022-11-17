@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Logo from "./Logo"
-
+import ReportProblemRoundedIcon from '@mui/icons-material/ReportProblemRounded';
+import { pink } from '@mui/material/colors';
 
 const Welcome = () => {
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const Welcome = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-   
+
     const handleApi = (e) => {
         e.preventDefault()
 
@@ -46,7 +47,7 @@ const Welcome = () => {
                             console.log('Mesas');
                         }
                     } else {
-                       
+
                         changeCredenciales(true)
                         errorCredenciales(true)
                         // errorInput(false)
@@ -59,6 +60,12 @@ const Welcome = () => {
     return <div className='welcome'>
         <section>
             <h1>Bienvenidx</h1>
+            {errorInput && <div className='error'>
+                <p><ReportProblemRoundedIcon sx={{ color: pink[500] }} className='iconoError' /><b>Error: </b> Rellena los campos</p>
+            </div>}
+            {errorCredenciales && <div className='error'>
+                <p><b>Error: </b> Credenciales Invalidas</p>
+            </div>}
             <p>Correo Electrónico</p>
             <input
                 value={email}
@@ -72,12 +79,7 @@ const Welcome = () => {
             <br />
             <button onClick={handleApi} className='buttonLogin'>Iniciar Sesión</button>
             <br />
-            {errorInput && <div className='error'>
-                <p><b>Error: </b> Rellena los campos</p>
-            </div>}
-            {errorCredenciales && <div className='error'>
-                <p><b>Error: </b> Credenciales Invalidas</p>
-            </div>}
+
         </section>
         <Logo />
     </div>
