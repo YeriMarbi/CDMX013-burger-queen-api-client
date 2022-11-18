@@ -15,6 +15,10 @@ export const Table = () => {
         setEdit(e.target.dataset.id)
     }
 
+    const handleValueTable = (e) => {
+        setEdit(e.target.dataset.id)
+    }
+
     const getData = async () => {
         await axios.get(URL).then(result => {
             const data = result.data;
@@ -28,29 +32,32 @@ export const Table = () => {
     }, []);
     const columns = [
         {
-            name: 'Name',
+            name: 'NOMBRE',
             id: "name",
-            selector: row => edit===row.id?<input value={row.name}></input> :row.name
+            selector: row => edit===row.id?<input  value={row.name} ></input> :row.name
         },
         {
-            name: 'Area',
+            name: 'AREA',
             id: "area",
             selector: row => row.area
         },
         {
-            name: 'E-mail',
+            name: 'CORREO',
             id: "e-mail",
             selector: row => row.email
         },
         {
-            name: 'Password',
+            name: 'CONTRASEÑA',
             id: "password",
             selector: row => row.password
         },
         {
-            name: 'Editar',
+            name: '',
             id: "editbtn",
-            selector: row => <button data-id={row.id} onClick={editRow}>editar</button>
+            selector: row => <button 
+            data-id={row.id} 
+            onClick={editRow}
+            >editar</button>
         },
     ]
     return (
