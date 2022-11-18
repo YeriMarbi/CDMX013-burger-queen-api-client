@@ -12,9 +12,9 @@ const Welcome = () => {
     const [password, setPassword] = useState('');
     const [errorInput, changeError] = useState(null);
     const [errorCredenciales, changeCredenciales] = useState(null);
-    // let mensaje = ''
 
     const navigate = useNavigate();
+    
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
