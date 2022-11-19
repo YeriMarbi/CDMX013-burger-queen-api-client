@@ -1,9 +1,9 @@
 import React from 'react';
-import "./login.css";
+import "./style/login.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import Logo from "./Logo"
+import Logo from "./elements/Logo"
 import MessageError from "./elements/messageError"
 
 

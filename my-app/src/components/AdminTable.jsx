@@ -1,13 +1,15 @@
 import axios from 'axios'
 import * as React from 'react';
-import "./admin.css";
+import "./style/admin.css";
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component'
 
 
 export const Table = () => {
-    const [users, setUsers] = useState([])
-    const [edit, setEdit]=useState(false)
+    const [users, setUsers] = useState([]);
+    const [edit, setEdit]=useState(false);
+    let [name, setName]=useState('');
+   
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
@@ -15,8 +17,8 @@ export const Table = () => {
         setEdit(e.target.dataset.id)
     }
 
-    const handleValueTable = (e) => {
-        setEdit(e.target.dataset.id)
+    const handleName = (e) => {
+        setName(e.target.dataset.id)
     }
 
     const getData = async () => {
@@ -30,26 +32,37 @@ export const Table = () => {
     useEffect(() => {
         getData()
     }, []);
+
+  
     const columns = [
+     
         {
             name: 'NOMBRE',
             id: "name",
-            selector: row => edit===row.id?<input  value={row.name} ></input> :row.name
+            selector: row => edit===row.id ? <input value= {row.name} 
+            // value= {row.name} 
+            onChange={handleName} ></input> :row.name
         },
         {
             name: 'AREA',
             id: "area",
-            selector: row => row.area
+            selector: row => edit===row.id ? <input 
+            // value= {area} 
+            value= {row.area}  ></input> :row.area
         },
         {
             name: 'CORREO',
             id: "e-mail",
-            selector: row => row.email
+            selector: row => edit===row.id ? <input 
+            // value= {area} 
+            value= {row.email}  ></input> :row.email
         },
         {
             name: 'CONTRASEÑA',
             id: "password",
-            selector: row => row.password
+            selector: row => edit===row.id ? <input 
+            // value= {area} 
+            value= {row.password}  ></input> :row.password
         },
         {
             name: '',
@@ -57,6 +70,7 @@ export const Table = () => {
             selector: row => <button 
             data-id={row.id} 
             onClick={editRow}
+
             >editar</button>
         },
     ]
