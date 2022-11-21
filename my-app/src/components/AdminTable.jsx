@@ -39,7 +39,7 @@ export const Table = () => {
         {
             name: 'NOMBRE',
             id: "name",
-            selector: row => edit===row.id ? <input value= {row.name} 
+            selector: row => edit===row.id ? <input value= {name} 
             // value= {row.name} 
             onChange={handleName} ></input> :row.name
         },
@@ -72,6 +72,14 @@ export const Table = () => {
             onClick={editRow}
 
             >editar</button>
+        },
+        {
+            name: '',
+            id: "deletebtn",
+            selector: row => <button 
+            data-id={row.id} 
+            onClick={editRow}
+            >Eliminar</button>
         },
     ]
     return (

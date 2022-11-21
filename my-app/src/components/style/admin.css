@@ -27,6 +27,21 @@
     font-family: 'Inter', sans-serif;
     color: rgb(255, 255, 255);
   }
+  [data-column-id="deletebtn"].rdt_TableCol, .rdt_TableRow {
+    background-color: #56273B;;
+    font-family: 'Inter', sans-serif;
+    color: rgb(255, 255, 255);
+  }
+  [data-column-id="producto"].rdt_TableCol, .rdt_TableRow {
+    background-color: #56273B;;
+    font-family: 'Inter', sans-serif;
+    color: rgb(255, 255, 255);
+  }
+  [data-column-id="precio"].rdt_TableCol, .rdt_TableRow {
+    background-color: #56273B;;
+    font-family: 'Inter', sans-serif;
+    color: rgb(255, 255, 255);
+  }
 
 .rdt_TableHeadRow {
     background-color: #56273B;
