@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component'
 
 
-export const TableComponent = (path,) => {
-    const [users, setUsers] = useState([])
-    const [edit, setEdit]=useState(false)
+export let TableComponent = (path, ) => {
+    let [users, setUsers] = useState([])
+    let [edit, setEdit]=useState(false)
 
-    const URL = path
+    let URL = path
 
     const editRow = (e) => {
         setEdit(e.target.dataset.id)
@@ -70,6 +70,7 @@ export const TableComponent = (path,) => {
         </div>
     )
 }
+//----------------------------------------------Products BQ-------------------------------------
 
 export const TableProducts = () => {
     const [users, setUsers] = useState([]);
@@ -90,7 +91,7 @@ export const TableProducts = () => {
     const getData = async () => {
         await axios.get(URL).then(result => {
             const data = result.data;
-            console.log(data);
+            // console.log(data);
             setUsers(data);
         }
         )
