@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table } from './AdminTable';
-import "./admin.css";
-import Logo from './Logo.jsx'
+import { TableProducts } from './elements/TableData';
+import "./style/admin.css";
+import Logo from './elements/Logo.jsx'
 
 const ButtonsMenu = () => {
     return (
@@ -24,8 +25,9 @@ const InputEmployee = () => {
                 <input placeholder='Correo' className='inputAdm'></input>
                 <input placeholder='Contraseña' className='inputAdm'></input>
                 <button id="addEmployee">AGREGAR</button>
+                <Table></Table>
+                <TableProducts></TableProducts>
             </div>
-            <Table></Table>
         </section>
     )
 }

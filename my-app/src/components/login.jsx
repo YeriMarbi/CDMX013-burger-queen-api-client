@@ -1,28 +1,16 @@
 import React from 'react';
-import "./login.css";
+import "./style/login.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import Logo from "./Logo"
-import ReportProblemRoundedIcon from '@mui/icons-material/ReportProblemRounded';
-import { pink } from '@mui/material/colors';
-
-const Myerror = ({ message }) => {
-    console.log(message)
-    return (
-        <div className='error'>
-            <p><ReportProblemRoundedIcon sx={{ color: pink[500] }}
-                className='iconoError' />
-                <b>Error: </b>{message}</p>
-        </div>
-    )
-}
+import Logo from "./elements/Logo"
+import MessageError from "./elements/messageError"
 
 
 const Welcome = () => {    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorInput, setError] = useState(false);
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
+    let [errorInput, setError] = useState(false);
     let [message, setMessage] = useState(false);
 
     const navigate = useNavigate();
@@ -33,10 +21,10 @@ const Welcome = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-
+  
     const handleApi = (e) => {
         e.preventDefault()
-        console.log({ email, password });
+      
         if (email === '' || password === '') {
             setMessage(false)
             setError(true)
@@ -60,9 +48,7 @@ const Welcome = () => {
                     } else {
                         setMessage(true)
                         setError(true)
-                        console.log('cuando metemos credenciales invalidas primero');
                     }
-
                 });
             })
     }
@@ -70,13 +56,11 @@ const Welcome = () => {
     return <div className='welcome'>
         <section>
             <h1>Bienvenidx</h1>
-
             {errorInput &&
-                <Myerror message={message ? 'Credenciales Invalidas' : 'Rellena los campos'} />
+                <MessageError 
+                message={message ? 'Credenciales Invalidas' : 'Rellena los campos'} 
+                />
             }
-            {/* { errorCredenciales &&
-            <Myerror message='Credenciales Inválidas'/>
-            } */}
             <p>Correo Electrónico</p>
             <input
                 value={email}
