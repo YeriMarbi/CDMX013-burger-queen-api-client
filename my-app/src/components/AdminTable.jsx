@@ -62,7 +62,7 @@ export const Table = () => {
         getData()
     }, []);
 
-    useEffect(() => console.log(selectedUser), [selectedUser])
+    // useEffect(() => console.log(selectedUser), [selectedUser])
 
 
     const columns = [

@@ -31,6 +31,7 @@ export let TableComponent = (path,) => {
     useEffect(() => {
         getData()
     }, []);
+    
     const columns = [
         {
             name: 'NOMBRE',
@@ -76,8 +77,8 @@ export const TableProducts = () => {
     let [products, setProducts] = useState([]);
     let [edit, setEdit] = useState(false);
     let [selectedProduct, setSelectedProduct] = useState({
-        Producto: '',
-        Precio: '',
+        producto: '',
+        precio: '',
     })
 
     const URL = 'https://637ba5d36f4024eac2148d5b.mockapi.io/Productos'
@@ -92,13 +93,13 @@ export const TableProducts = () => {
     // }
 
     const handleInputChange = (e) => {
-        // const name = e.target.name
-        // const value = e.target.value
-        const { Producto, value } = e.target
-        const { Precio, valuePrecio } = e.target
+        const producto = e.target.name
+        const value = e.target.value
+        // const { producto, value } = e.target
+        const { precio, valuePrecio } = e.target
 
-        setSelectedProduct((prevState) => ({ ...prevState, [Producto]: value }))
-        setSelectedProduct((prevState) => ({ ...prevState, [Precio]: valuePrecio }))
+        setSelectedProduct((prevState) => ({ ...prevState, [producto]: value }))
+        setSelectedProduct((prevState) => ({ ...prevState, [precio]: valuePrecio }))
     }
 
     const getData = () => {
@@ -120,19 +121,19 @@ useEffect(() => console.log(selectedProduct), [selectedProduct])
             name: 'PRODUCTO',
             id: "producto",
             selector: row => edit === row.id ? <input
-            name="producto"
-            value={selectedProduct.Producto}
+            name="productos"
+            value={selectedProduct.producto}
             onChange={handleInputChange}>
-            </input> : row.Producto
+            </input> : row.producto
         },
         {
             name: 'PRECIO',
             id: "precio",
             selector: row => edit === row.id ? <input
             name="precio"
-            value={selectedProduct.Precio}
+            value={selectedProduct.precio}
             onChange={handleInputChange}>
-            </input> : '$ ' + row.Precio
+            </input> : '$ ' + row.precio
         },
 
         {
