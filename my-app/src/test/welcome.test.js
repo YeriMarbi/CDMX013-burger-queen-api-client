@@ -3,7 +3,7 @@ import Welcome from '../components/login'
 import axios from "axios";
 jest.mock('axios');
 
-// const mockedAxios = axios as jest.Mocked<typeof axios>;
+axios.get = jest.fn(() => { Promise.resolve({ status: 200 }) });
 
 
 describe('Welcome component', ()=>{

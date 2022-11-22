@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from './AdminTable';
-import { TableProducts } from './elements/TableData';
+// import { TableProducts } from './elements/TableData';
 import "./style/admin.css";
 import Logo from './elements/Logo.jsx'
 
@@ -25,9 +25,9 @@ const InputEmployee = () => {
                 <input placeholder='Correo' className='inputAdm'></input>
                 <input placeholder='Contraseña' className='inputAdm'></input>
                 <button id="addEmployee">AGREGAR</button>
-                <Table></Table>
-                <TableProducts></TableProducts>
             </div>
+            <Table></Table>
+            {/* <TableProducts></TableProducts> */}
         </section>
     )
 }

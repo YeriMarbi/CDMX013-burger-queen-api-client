@@ -62,16 +62,14 @@
   display: flex;
   background-color: #343240;
   flex-direction: row;
-  margin: 0;
-  height: 100%;
-  margin: -1vw;
-  border-radius: 1vh;
+  margin: -0.8vw;
+  height: 100vh;
 }
 
 .menuBtn {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 16vw;
   padding: 3vh;
   border: none;
   font-weight: bolder;
@@ -102,22 +100,34 @@
 }
 
 #addEmployee {
-  background-color: #C77136;
-  color: white;
-  border-radius: 1vh;
-  font-family: 'Inter', sans-serif;
-  padding: 2vh;
-  font-size: 1em;
-  border: none;
-  font-weight: bolder;
-  margin: 2.9vh 0 2vh 1.5vh;
+  margin: 3vh 0 2vh 1.5vh;
+  width: 15vw;
 }
 
 .inputAdm {
-  padding: 2vh;
+  padding: 1.5vh;
   border-color: #56273B;
   border-radius: 1vh;
-  width: 10Vw;
-  padding: 2.3vh;
-  margin: 3vh 0 2vh 0.3vh
+  width: 13vw;
+  height: 3.7vh;
+  margin: 0 0 2vh 0.3vh
+}
+
+.inputAdm:focus {
+  border: 0.5vw solid #f5c421;
+}
+
+.backAdmin img{
+  opacity: 0.5;
+  width: 14vw ;
+  margin-top: 27vh;
+  margin-bottom: 7vh;
+  padding:1vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.tabEmpl{
+  width: 78%;
+
 }

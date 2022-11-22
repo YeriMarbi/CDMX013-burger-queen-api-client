@@ -19,7 +19,11 @@ export const TableProducts = () => {
         setSelectedProduct(row)
         setEdit(row.id)
     }
-
+    const saveData = (row) => {
+        console.log('row', row);
+        setEdit('')
+        // putData(selectedProduct)
+    }
     // const handleProduct = (e) => {
     //     setProduct(e.target.dataset.id)
     // }
@@ -27,7 +31,7 @@ export const TableProducts = () => {
     const handleInputChange = (e) => {
         const producto = e.target.name
         // const value = e.target.value
-         const { precio, value } = e.target
+        const { precio, value } = e.target
         // const { precio, valuePrecio } = e.target
 
         setSelectedProduct((prevState) => ({ ...prevState, [producto]: value }))
@@ -45,7 +49,7 @@ export const TableProducts = () => {
         getData()
     }, []);
 
-useEffect(() => console.log(selectedProduct), [selectedProduct])
+    // useEffect(() => console.log(selectedProduct), [selectedProduct])
 
     const columns = [
 
@@ -53,34 +57,36 @@ useEffect(() => console.log(selectedProduct), [selectedProduct])
             name: 'PRODUCTO',
             id: "producto",
             selector: row => edit === row.id ? <input
-            name="productos"
-            value={selectedProduct.producto}
-            onChange={handleInputChange}>
+                name="producto"
+                value={selectedProduct.producto}
+                onChange={handleInputChange}>
             </input> : row.producto
         },
         {
             name: 'PRECIO',
             id: "precio",
             selector: row => edit === row.id ? <input
-            name="precio"
-            value={selectedProduct.precio}
-            onChange={handleInputChange}>
+                name="precio"
+                value={selectedProduct.precio}
+                onChange={handleInputChange}>
             </input> : '$ ' + row.precio
         },
 
         {
             name: '',
             id: "editbtn",
-            selector: row => <button
-            onClick={() => editRow(row)}
-            >editar</button>
+            selector: row => edit === row.id ?
+                <button onClick={() => saveData(row)}>OK</button>
+                : <button
+                    onClick={() => editRow(row)}
+                >editar</button>
         },
         {
             name: '',
             id: "deletebtn",
             selector: row => <button
-                // data-id={row.id}
-                // onClick={editRow}
+            // data-id={row.id}
+            // onClick={editRow}
             >Eliminar</button>
         },
     ]
