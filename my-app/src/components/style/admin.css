@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 [data-column-id="name"].rdt_TableCol {
     background-color: #56273B;;
@@ -44,15 +45,79 @@
   }
 
 .rdt_TableHeadRow {
-    background-color: #56273B;
-    font-family: 'Inter', sans-serif;
-    color: black;
-    font-size: larger;
-}
-.rdt_TableRow {
-    background-color: rgb(255, 255, 255);
-    font-family: 'Inter', sans-serif;
-    color: black;
-    width: 5vw;
+  background-color: #56273B;
+  font-family: 'Inter', sans-serif;
+  color: black;
+  font-size: larger;
 }
 
+.rdt_TableRow {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Inter', sans-serif;
+  color: black;
+  width: 5vw;
+}
+
+.backAdmin {
+  display: flex;
+  background-color: #343240;
+  flex-direction: row;
+  margin: 0;
+  height: 100%;
+  margin: -1vw;
+  border-radius: 1vh;
+}
+
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  padding: 3vh;
+  border: none;
+  font-weight: bolder;
+}
+
+#exit,
+#prodBtn,
+#addEmployee,
+#emplBtn {
+  background-color: #C77136;
+  color: white;
+  border-radius: 1vh;
+  font-family: 'Inter', sans-serif;
+  padding: 2vh;
+  font-size: 1em;
+  border: none;
+  font-weight: bolder;
+}
+
+#emplBtn {
+  background-color: #56273B;
+  border: none;
+  padding: 2vh;
+  border-radius: 1vh;
+  font-weight: bolder;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+#addEmployee {
+  background-color: #C77136;
+  color: white;
+  border-radius: 1vh;
+  font-family: 'Inter', sans-serif;
+  padding: 2vh;
+  font-size: 1em;
+  border: none;
+  font-weight: bolder;
+  margin: 2.9vh 0 2vh 1.5vh;
+}
+
+.inputAdm {
+  padding: 2vh;
+  border-color: #56273B;
+  border-radius: 1vh;
+  width: 10Vw;
+  padding: 2.3vh;
+  margin: 3vh 0 2vh 0.3vh
+}
