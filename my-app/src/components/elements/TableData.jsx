@@ -45,7 +45,7 @@ export const TableProducts = () => {
         getData()
     }, []);
 
-useEffect(() => console.log(selectedProduct), [selectedProduct])
+// useEffect(() => console.log(selectedProduct), [selectedProduct])
 
     const columns = [
 
@@ -53,7 +53,7 @@ useEffect(() => console.log(selectedProduct), [selectedProduct])
             name: 'PRODUCTO',
             id: "producto",
             selector: row => edit === row.id ? <input
-            name="productos"
+            name="producto"
             value={selectedProduct.producto}
             onChange={handleInputChange}>
             </input> : row.producto

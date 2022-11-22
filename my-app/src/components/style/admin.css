@@ -102,22 +102,29 @@
 }
 
 #addEmployee {
-  background-color: #C77136;
-  color: white;
-  border-radius: 1vh;
-  font-family: 'Inter', sans-serif;
-  padding: 2vh;
-  font-size: 1em;
-  border: none;
-  font-weight: bolder;
   margin: 2.9vh 0 2vh 1.5vh;
+  width: 12vw;
 }
 
 .inputAdm {
   padding: 2vh;
   border-color: #56273B;
   border-radius: 1vh;
-  width: 10Vw;
+  width: 11.5vw;
   padding: 2.3vh;
   margin: 3vh 0 2vh 0.3vh
+}
+
+.backAdmin img{
+  opacity: 0.5;
+  width: 14vw ;
+  margin-top: 10vw;
+  padding:3vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.tabEmpl{
+  width: 74%;
+
 }
