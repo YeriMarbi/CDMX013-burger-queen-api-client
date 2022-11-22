@@ -3,6 +3,7 @@ import * as React from 'react';
 import "./style/admin.css";
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component'
+import btn from './elements/button'
 
 
 export const Table = () => {
@@ -63,7 +64,6 @@ export const Table = () => {
     }, []);
 
     // useEffect(() => console.log(selectedUser), [selectedUser])
-
 
     const columns = [
 
