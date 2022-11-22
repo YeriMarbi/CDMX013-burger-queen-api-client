@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Welcome from './components/login'
 import Admin from './components/Admin'
 
-
 function App() {
   return (
     <Router>
