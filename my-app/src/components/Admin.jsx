@@ -8,7 +8,7 @@ const ButtonsMenu = () => {
         <section className='menuBtn'>
             <button id="emplBtn">EMPLEADOS</button><br></br>
             <button id="prodBtn">PRODUCTOS</button>
-            <Logo color ='red' />
+            <Logo />
             <button id="exit">SALIR</button>
 
         </section>
