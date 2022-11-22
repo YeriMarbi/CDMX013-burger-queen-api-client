@@ -22,7 +22,7 @@ export const Table = () => {
     const getData = async () => {
         await axios.get(URL).then(result => {
             const data = result.data;
-            // console.log(data);
+            console.log(data);
             setUsers(data);
         }
         )
