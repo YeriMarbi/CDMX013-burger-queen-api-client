@@ -45,9 +45,9 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-     const putData=async(selectedUser)=>{
+     const putData=(selectedUser)=>{
         
-       await axios.put('https://637265f4025414c6370eb684.mockapi.io/api/bq/users',selectedUser)
+      axios.put('https://637265f4025414c6370eb684.mockapi.io/api/bq/users',selectedUser)
         console.log(selectedUser)
         .then((selectedUser)=> console.log(selectedUser))
       
