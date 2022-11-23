@@ -53,8 +53,6 @@ export const Table = () => {
       axios.put('https://637265f4025414c6370eb684.mockapi.io/api/bq/users',selectedUser)
         console.log(selectedUser)
         .then((selectedUser)=> console.log(selectedUser))
-      
-
         }
        
 //  useEffect(() => console.log(selectedUser), [selectedUser])
