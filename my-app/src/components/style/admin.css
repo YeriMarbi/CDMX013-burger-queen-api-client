@@ -1,54 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-[data-column-id="name"].rdt_TableCol {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  [data-column-id="area"].rdt_TableCol {
-    background-color: #56273B;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-    font-weight: bolder;
-  }
-  [data-column-id="e-mail"].rdt_TableCol {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  [data-column-id="password"].rdt_TableCol, .rdt_TableRow {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-
-  [data-column-id="editbtn"].rdt_TableCol, .rdt_TableRow {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  [data-column-id="deletebtn"].rdt_TableCol, .rdt_TableRow {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  [data-column-id="producto"].rdt_TableCol, .rdt_TableRow {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  [data-column-id="precio"].rdt_TableCol, .rdt_TableRow {
-    background-color: #56273B;;
-    font-family: 'Inter', sans-serif;
-    color: rgb(255, 255, 255);
-  }
-
-.rdt_TableHeadRow {
+[data-column-id="name"].rdt_TableCol,
+[data-column-id="area"].rdt_TableCol,
+[data-column-id="e-mail"].rdt_TableCol,
+[data-column-id="password"].rdt_TableCol,
+[data-column-id="producto"].rdt_TableCol,
+[data-column-id="precio"].rdt_TableCol
+ {
   background-color: #56273B;
   font-family: 'Inter', sans-serif;
-  color: black;
-  font-size: larger;
+  color: rgb(255, 255, 255);
+}
+
+[data-column-id="editbtn"].rdt_TableCol,
+.rdt_TableRow {
+  background-color: #56273B;
+  font-family: 'Inter', sans-serif;
+  color: rgb(255, 255, 255);
+ width: 25vw;
+}
+
+[data-column-id="deletebtn"].rdt_TableCol,
+.rdt_TableRow {
+  background-color: #56273B;
+  font-family: 'Inter', sans-serif;
+  color: rgb(255, 255, 255);
 }
 
 .rdt_TableRow {
@@ -91,12 +68,6 @@
 
 #emplBtn {
   background-color: #56273B;
-  border: none;
-  padding: 2vh;
-  border-radius: 1vh;
-  font-weight: bolder;
-  color: white;
-  font-family: 'Inter', sans-serif;
 }
 
 #addEmployee {
@@ -117,17 +88,16 @@
   border: 0.5vw solid #f5c421;
 }
 
-.backAdmin img{
+.backAdmin img {
   opacity: 0.5;
-  width: 14vw ;
+  width: 14vw;
   margin-top: 20vh;
   margin-bottom: 7vh;
-  padding:1vw;
+  padding: 1vw;
   align-self: center;
   justify-self: center;
 }
 
-.tabEmpl{
+.tabEmpl {
   width: 78%;
-
 }

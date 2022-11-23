@@ -29,16 +29,15 @@ export const Table = () => {
         setEdit('')
         putData(selectedUser)
     }
-   
+
     const handleInputChange = (e) => {
-       
+
         const { name, value, area, email, password } = e.target
 
         setSelectedUser((prevState) => ({ ...prevState, [name]: value }))
         setSelectedUser((prevState) => ({ ...prevState, [area]: value }))
         setSelectedUser((prevState) => ({ ...prevState, [email]: value }))
-        setSelectedUser((prevState) => ({ ...prevState, [password]: value}))
-       
+        setSelectedUser((prevState) => ({ ...prevState, [password]: value }))
     }
 
     // const getData = () => {
@@ -48,17 +47,16 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-     const putData=(selectedUser)=>{
-        
-      axios.put('https://637265f4025414c6370eb684.mockapi.io/api/bq/users',selectedUser)
-        console.log(selectedUser)
-        .then((selectedUser)=> console.log(selectedUser))
-        }
-       
-//  useEffect(() => console.log(selectedUser), [selectedUser])
- 
+    const putData = async(datafinal) => {
+       const result=await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+       const editData=result.editData;
+            setSelectedUser(editData)
+    }
 
-    const getData =  async () => {
+    //  useEffect(() => console.log(selectedUser), [selectedUser])
+
+
+    const getData = async () => {
         const result = await axios.get(URL)
         const data = result.data;
         setUsers(data);
@@ -68,58 +66,39 @@ export const Table = () => {
         getData()
     }, []);
 
-    
-
     const columns = [
         {
             name: 'NOMBRE',
             id: "name",
-            selector: row => edit === row.id ? <input
-                name="name"
-                value={selectedUser.name}
-                onChange={handleInputChange}>
+            selector: row => edit === row.id ? <input name="name" value={selectedUser.name} onChange={handleInputChange}>
             </input> : row.name
         },
         {
             name: 'AREA',
             id: "area",
-            selector: row => edit === row.id ?
-                <select
-                    name="area"
-                    onChange={handleInputChange}>
-                    <option>Cocina</option>
-                    <option>Administrador</option>
-                    <option>Meserx</option>
-                </select>
-                : row.area
+            selector: row => edit === row.id ? <select name="area" onChange={handleInputChange}>
+                <option>Cocina</option>
+                <option>Administrador</option>
+                <option>Meserx</option>
+            </select> : row.area
         },
         {
             name: 'CORREO',
             id: "e-mail",
-            selector: row => edit === row.id ? <input
-                name="email"
-                value={selectedUser.email}
-                onChange={handleInputChange}
-            ></input> : row.email
+            selector: row => edit === row.id ? <input name="email" value={selectedUser.email} onChange={handleInputChange}>
+            </input> : row.email
         },
         {
             name: 'CONTRASEÑA',
             id: "password",
-            selector: row => edit === row.id ? <input
-                name="password"
-                value={selectedUser.password}
-                onChange={handleInputChange}
-            >
+            selector: row => edit === row.id ? <input name="password" value={selectedUser.password} onChange={handleInputChange}>
             </input> : row.password
         },
         {
             name: '',
             id: "editbtn",
-            selector: row => edit === row.id ?
-                <SaveIcon onClick={() => saveData(row)}>OK</SaveIcon>
-                : <EditIcon
-                    onClick={() => editRow(row)}
-                >editar</EditIcon> 
+            selector: row => edit === row.id ? <SaveIcon onClick={() => saveData(row)}>OK</SaveIcon>
+                : <EditIcon onClick={() => editRow(row)} >editar</EditIcon>
         },
         {
             name: '',

@@ -50,6 +50,8 @@ export const InputEmployee = () => {
             password:datos.password
         }
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', prueba)
+        // .then((data) => {
+        //     setDatos(data)});
         // .then(result => {
         //     console.log(result.data)
         // })
@@ -57,7 +59,7 @@ export const InputEmployee = () => {
     // useEffect(() => {
     //     handleApi()
     // }, []);
-
+    
     return (
         <section className='tabEmpl'>
             <div className='employee'>
@@ -72,4 +74,5 @@ export const InputEmployee = () => {
         </section>
     )
 }
+
 
