@@ -71,7 +71,7 @@ body {
         margin: 0 0 0 75vw;
     }
     .error{
-       background-color: rgba(184, 138, 144, 0.59);
+       background-color: rgba(184, 138, 144, 0.696);
        border-radius: 0.1vw;
        text-align: center;
        padding: 1.5vh;
