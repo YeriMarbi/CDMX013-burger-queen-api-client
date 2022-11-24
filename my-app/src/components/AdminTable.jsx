@@ -18,6 +18,7 @@ export const Table = () => {
         password: '',
     })
     let [edit, setEdit] = useState('');
+    const [deleteUser, setDeleteUser] = useState(null)
     // let [delete, setDelete] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
@@ -49,22 +50,22 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-    const editData = async(datafinal) => {
-       await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
-        .then((result)=>{
-        console.log(result.data)
-        console.log(setSelectedUser(result.data), 'Acá')
-         })
-    //    const editData=result.editData;
-    //         setSelectedUser(editData)
+    const editData = async (datafinal) => {
+        await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
+            .then((result) => {
+                console.log(result.data)
+                console.log(setSelectedUser(result.data), 'Acá')
+            })
+        //    const editData=result.editData;
+        //         setSelectedUser(editData)
     }
 
-    const deleteData = (datafinal) => {
-         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
-         // setModal(false)
+    const deleteData = () => {
+        axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
+        setModal(false)
         // const editData=result.editData;
         //     setSelectedUser(editData)
-     }
+    }
 
     //  useEffect(() => console.log(selectedUser), [selectedUser])
 
@@ -79,11 +80,13 @@ export const Table = () => {
         getData()
     }, []);
 
-    const showModal =  () => {
+    const showModal = (user) => {
+        console.log(user);
         setModal(true);
+        setDeleteUser(user)
     };
 
-    const closeModal = () =>{
+    const closeModal = () => {
         setModal(false);
     }
     const columns = [
@@ -123,8 +126,8 @@ export const Table = () => {
         {
             name: '',
             id: "deletebtn",
-            selector: row =>  <DeleteIcon onClick={ showModal}
-            >Eliminar</DeleteIcon> 
+            selector: row => <DeleteIcon onClick={()=>showModal(row)}
+            >Eliminar</DeleteIcon>
         },
     ]
     return (
@@ -133,9 +136,9 @@ export const Table = () => {
                 columns={columns}
                 data={users}
             />
-           {modal && <Modal
-           funBorrar = {deleteData}
-           funCerrar ={closeModal}/>}
+            {modal && <Modal
+                funBorrar={deleteData}
+                funCerrar={closeModal} />}
         </div>
     )
 }
