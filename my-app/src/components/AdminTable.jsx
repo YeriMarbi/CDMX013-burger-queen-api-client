@@ -52,17 +52,15 @@ export const Table = () => {
     // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
-            .then((result) => {
-                console.log(result.data)
-                console.log(setSelectedUser(result.data), 'Acá')
-            })
+            getData()
         //    const editData=result.editData;
         //         setSelectedUser(editData)
     }
 
     const deleteData = () => {
         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
-        setModal(false)
+        setModal(false) 
+        getData()
         // const editData=result.editData;
         //     setSelectedUser(editData)
     }
