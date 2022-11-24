@@ -25,7 +25,7 @@ export const Table = () => {
         setEdit(row.id)
     }
     const saveData = (row) => {
-        console.log('row', row);
+        // console.log('row', row);
         setEdit('')
         putData(selectedUser)
     }
@@ -47,13 +47,16 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-    const putData = async(datafinal) => {
-       const result=await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
-       const editData=result.editData;
-            setSelectedUser(editData)
+    const putData = (datafinal) => {
+        axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+        .then((response) => {
+            setSelectedUser(response.data);
+        })
+    //    const editData=result.editData;
+    //         setSelectedUser(editData)
     }
 
-    //  useEffect(() => console.log(selectedUser), [selectedUser])
+    // useEffect(() => console.log(selectedUser), [setSelectedUser])
 
 
     const getData = async () => {
