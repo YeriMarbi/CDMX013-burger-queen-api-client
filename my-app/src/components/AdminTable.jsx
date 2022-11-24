@@ -6,8 +6,10 @@ import DataTable from 'react-data-table-component'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import Modal from './elements/Modal.jsx'
 
 export const Table = () => {
+    const [modal, setModal] = useState(false);
     let [users, setUsers] = useState([]);
     let [selectedUser, setSelectedUser] = useState({
         name: '',
@@ -59,6 +61,7 @@ export const Table = () => {
 
     const deleteData = (datafinal) => {
          axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+         // setModal(false)
         // const editData=result.editData;
         //     setSelectedUser(editData)
      }
@@ -76,6 +79,13 @@ export const Table = () => {
         getData()
     }, []);
 
+    const showModal =  () => {
+        setModal(true);
+    };
+
+    const closeModal = () =>{
+        setModal(false);
+    }
     const columns = [
         {
             name: 'NOMBRE',
@@ -113,8 +123,8 @@ export const Table = () => {
         {
             name: '',
             id: "deletebtn",
-            selector: row => <DeleteIcon onClick={()=> deleteData(row)}
-            >Eliminar</DeleteIcon>
+            selector: row =>  <DeleteIcon onClick={ showModal}
+            >Eliminar</DeleteIcon> 
         },
     ]
     return (
@@ -123,6 +133,9 @@ export const Table = () => {
                 columns={columns}
                 data={users}
             />
+           {modal && <Modal
+           funBorrar = {deleteData}
+           funCerrar ={closeModal}/>}
         </div>
     )
 }
