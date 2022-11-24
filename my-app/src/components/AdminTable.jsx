@@ -6,8 +6,10 @@ import DataTable from 'react-data-table-component'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import Modal from './elements/Modal.jsx'
 
 export const Table = () => {
+    const [modal, setModal] = useState(false);
     let [users, setUsers] = useState([]);
     let [selectedUser, setSelectedUser] = useState({
         name: '',
@@ -27,7 +29,7 @@ export const Table = () => {
     const saveData = (row) => {
         // console.log('row', row);
         setEdit('')
-        putData(selectedUser)
+        editData(selectedUser)
     }
 
     const handleInputChange = (e) => {
@@ -47,16 +49,24 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-    const putData = (datafinal) => {
-        axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
-        .then((response) => {
-            setSelectedUser(response.data);
-        })
+    const editData = async(datafinal) => {
+       await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+        .then((result)=>{
+        console.log(result.data)
+        console.log(setSelectedUser(result.data), 'Acá')
+         })
     //    const editData=result.editData;
     //         setSelectedUser(editData)
     }
 
-    // useEffect(() => console.log(selectedUser), [setSelectedUser])
+    const deleteData = (datafinal) => {
+         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+         // setModal(false)
+        // const editData=result.editData;
+        //     setSelectedUser(editData)
+     }
+
+    //  useEffect(() => console.log(selectedUser), [selectedUser])
 
 
     const getData = async () => {
@@ -69,6 +79,13 @@ export const Table = () => {
         getData()
     }, []);
 
+    const showModal =  () => {
+        setModal(true);
+    };
+
+    const closeModal = () =>{
+        setModal(false);
+    }
     const columns = [
         {
             name: 'NOMBRE',
@@ -106,8 +123,8 @@ export const Table = () => {
         {
             name: '',
             id: "deletebtn",
-            selector: row => <DeleteIcon
-            >Eliminar</DeleteIcon>
+            selector: row =>  <DeleteIcon onClick={ showModal}
+            >Eliminar</DeleteIcon> 
         },
     ]
     return (
@@ -116,6 +133,9 @@ export const Table = () => {
                 columns={columns}
                 data={users}
             />
+           {modal && <Modal
+           funBorrar = {deleteData}
+           funCerrar ={closeModal}/>}
         </div>
     )
 }
