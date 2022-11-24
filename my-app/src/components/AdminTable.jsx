@@ -19,16 +19,14 @@ export const Table = () => {
     })
     let [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
-    // let [delete, setDelete] = useState(false);
-
+  
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
     const editRow = (row) => {
         setSelectedUser(row)
         setEdit(row.id)
     }
-    const saveData = (row) => {
-        // console.log('row', row);
+    const saveData = () => {
         setEdit('')
         editData(selectedUser)
     }
@@ -52,23 +50,14 @@ export const Table = () => {
     // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
-            .then((result) => {
-                console.log(result.data)
-                console.log(setSelectedUser(result.data), 'Acá')
-            })
-        //    const editData=result.editData;
-        //         setSelectedUser(editData)
+        getData()
     }
 
     const deleteData = () => {
         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
         setModal(false)
-        // const editData=result.editData;
-        //     setSelectedUser(editData)
+        getData()
     }
-
-    //  useEffect(() => console.log(selectedUser), [selectedUser])
-
 
     const getData = async () => {
         const result = await axios.get(URL)

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect  } from "react";
+import { useState} from "react";
 import { Table } from './AdminTable';
 
 
@@ -11,27 +11,6 @@ export const InputEmployee = () => {
         email: '',
         password: ''
     })
-
-    // let [name, setName] = useState('');
-    // let [area, setArea] = useState('');
-    // let [email, setEmail] = useState('');
-    // let [password, setPassword] = useState('');
-
-    // const handleName = (e) => {
-    //     setName(e.target.value)
-    // }
-
-    // const handleArea = (e) => {
-    //     setArea(e.target.value)
-    // }
-
-    // const handleEmail = (e) => {
-    //     setEmail(e.target.value)
-    // }
-
-    // const handlePassword = (e) => {
-    //     setPassword(e.target.value)
-    // }
 
     const handleDatos = (e) => {
         const { name, area, email, password, value } = e.target
@@ -50,15 +29,8 @@ export const InputEmployee = () => {
             password:datos.password
         }
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', prueba)
-        // .then((data) => {
-        //     setDatos(data)});
-        // .then(result => {
-        //     console.log(result.data)
-        // })
+      
     }
-    // useEffect(() => {
-    //     handleApi()
-    // }, []);
     
     return (
         <section className='tabEmpl'>
