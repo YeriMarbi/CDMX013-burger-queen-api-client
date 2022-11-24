@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Logo from "./elements/Logo"
-import MessageError from "./elements/messageError"
+import MessageError from "./elements/MessageError"
 
 
 const Welcome = () => {    

@@ -105,7 +105,7 @@
 .modal {
   width: 100%;
   height: 100%;
-  background-color: rgba(3, 9, 24, 0.678);
+  background-color: rgba(67, 72, 84, 0.78);
   top: 0;
   left: 0;
   position: fixed;
@@ -114,10 +114,45 @@
 }
 
 .modalUser {
-  background-color: #f4f3f3;
+  background-color: #56273bd4;
   margin: 35vh auto 0 auto;
   padding: 5vh;
   border-radius: 5px;
   width: 50vw;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+}
+.modalUser p{
+  text-align: center;
+}
+
+.modalUser img{
+  opacity: 1;
+  margin: auto;
+  margin-left: 16vw;
+}
+
+.agreeBtn {
+  margin: 2vw;
+  background-color: rgb(40, 135, 40);
+  border: none;
+  color:aliceblue;
+  border-radius: 1vh;
+  width: 8vw;
+  height: 5vh ;
+  align-items: center;
+}
+
+.cancelBtn{
+  background-color: rgb(135, 40, 40);
+  border: none;
+  color:aliceblue;
+  border-radius: 1vh;
+  width: 8vw;
+  height: 5vh ;
+}
+
+.botones{
+  margin-left: 13vw;
 }
