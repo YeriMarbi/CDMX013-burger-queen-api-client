@@ -27,7 +27,7 @@ export const Table = () => {
     const saveData = (row) => {
         console.log('row', row);
         setEdit('')
-        putData(selectedUser)
+        editData(selectedUser)
     }
 
     const handleInputChange = (e) => {
@@ -47,11 +47,21 @@ export const Table = () => {
     //         setUsers(data);
     //     })
     // };
-    const putData = async(datafinal) => {
-       const result=await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
-       const editData=result.editData;
-            setSelectedUser(editData)
+    const editData = async(datafinal) => {
+       await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+        .then((result)=>{
+        console.log(result.data)
+        console.log(setSelectedUser(result.data), 'Acá')
+         })
+    //    const editData=result.editData;
+    //         setSelectedUser(editData)
     }
+
+    const deleteData = (datafinal) => {
+         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`,datafinal)
+        // const editData=result.editData;
+        //     setSelectedUser(editData)
+     }
 
     //  useEffect(() => console.log(selectedUser), [selectedUser])
 
@@ -103,7 +113,7 @@ export const Table = () => {
         {
             name: '',
             id: "deletebtn",
-            selector: row => <DeleteIcon
+            selector: row => <DeleteIcon onClick={()=> deleteData(row)}
             >Eliminar</DeleteIcon>
         },
     ]
