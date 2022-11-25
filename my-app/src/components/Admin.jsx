@@ -4,6 +4,8 @@ import "./style/admin.css";
 import Logo from './elements/Logo.jsx'
 import { InputEmployee } from './AddData'
 import { useNavigate } from 'react-router-dom';
+import Table from './AdminTable';
+
 
 
 const ButtonsMenu = () => {
@@ -48,7 +50,8 @@ const Admin = () => {
     return (
         <div className='backAdmin'>
             <ButtonsMenu />
-            <InputEmployee />
+            <Table />
+            
         </div>
     )
 }

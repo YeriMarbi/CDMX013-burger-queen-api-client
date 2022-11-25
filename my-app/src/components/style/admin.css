@@ -10,6 +10,7 @@
  {
   background-color: #56273B;
   font-family: 'Inter', sans-serif;
+  font-size: 1.2em;
   color: rgb(255, 255, 255);
 }
 
@@ -29,7 +30,6 @@
 }
 
 .rdt_TableRow {
-  background-color: rgb(255, 255, 255);
   font-family: 'Inter', sans-serif;
   color: black;
   width: 5vw;

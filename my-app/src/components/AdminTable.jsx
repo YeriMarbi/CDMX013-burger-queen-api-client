@@ -7,8 +7,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import Modal from './elements/Modal.jsx'
+// import { ProductsTable } from './ProductsTable';
 
-export const Table = () => {
+export const Table = ({ modified }) => {
+
+    const [datos, setDatos] = useState({
+        name: '',
+        area: '',
+        email: '',
+        password: ''
+    })
+
     const [modal, setModal] = useState(false);
     let [users, setUsers] = useState([]);
     let [selectedUser, setSelectedUser] = useState({
@@ -19,7 +28,7 @@ export const Table = () => {
     })
     let [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
-  
+
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
     const editRow = (row) => {
@@ -50,13 +59,13 @@ export const Table = () => {
     // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
-            getData()
+        getData()
 
     }
 
     const deleteData = () => {
         axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
-        setModal(false) 
+        setModal(false)
         getData()
     }
 
@@ -65,6 +74,31 @@ export const Table = () => {
         const data = result.data;
         setUsers(data);
     };
+
+    const handleDatos = (e) => {
+        const { name, area, email, password, value } = e.target
+        setDatos((prevState) => ({ ...prevState, [email]: value }))
+        setDatos((prevState) => ({ ...prevState, [name]: value }))
+        setDatos((prevState) => ({ ...prevState, [area]: value }))
+        setDatos((prevState) => ({ ...prevState, [password]: value }))
+    }
+
+
+    const handleApi = () => {
+        const prueba = {
+            name: datos.name,
+            area: datos.area,
+            email: datos.email,
+            password: datos.password
+        }
+        axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', prueba)
+.then((res)=>{
+    // console.log(res.data);
+setUsers([...users, res.data ])
+})
+        // datas()
+
+    }
 
     useEffect(() => {
         getData()
@@ -116,20 +150,30 @@ export const Table = () => {
         {
             name: '',
             id: "deletebtn",
-            selector: row => <DeleteIcon onClick={()=>showModal(row)}
+            selector: row => <DeleteIcon onClick={() => showModal(row)}
             >Eliminar</DeleteIcon>
         },
     ]
-    return (
+    return (<>
+        <div className='employee'>
+            <input name="name" value={datos.name} onChange={handleDatos} placeholder='Nombre' className='inputAdm'></input>
+            <input name="area" value={datos.area} onChange={handleDatos} placeholder='Área' className='inputAdm'></input>
+            <input name="email" value={datos.email} onChange={handleDatos} placeholder='Correo' className='inputAdm'></input>
+            <input name="password" value={datos.password} onChange={handleDatos} placeholder='Contraseña' className='inputAdm'></input>
+            <button id="addEmployee" onClick={handleApi}>AGREGAR</button>
+        </div>
         <div className='Table'>
             <DataTable
                 columns={columns}
                 data={users}
             />
-            {modal && <Modal
-                funBorrar={deleteData}
-                funCerrar={closeModal} />}
+            {
+                modal && <Modal
+                    funBorrar={deleteData}
+                    funCerrar={closeModal} />
+            }
         </div>
+    </>
     )
 }
 
