@@ -6,6 +6,7 @@ import { InputEmployee } from './AddData'
 import { useNavigate } from 'react-router-dom';
 
 
+
 const ButtonsMenu = () => {
 
     const navigate = useNavigate();

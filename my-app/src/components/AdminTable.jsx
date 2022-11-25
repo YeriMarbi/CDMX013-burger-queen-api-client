@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import Modal from './elements/Modal.jsx'
+import { ProductsTable } from './ProductsTable';
 
 export const Table = () => {
     const [modal, setModal] = useState(false);
@@ -137,6 +138,7 @@ export const Table = () => {
             {modal && <Modal
                 funBorrar={deleteData}
                 funCerrar={closeModal} />}
+                <ProductsTable/>
         </div>
     )
 }
