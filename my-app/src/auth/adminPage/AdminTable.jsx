@@ -1,17 +1,18 @@
 import axios from 'axios'
 import * as React from 'react';
-import "./style/admin.css";
+import "./admin.css";
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
-import Modal from './elements/Modal.jsx'
+import Modal from '../elements/Modal.jsx'
+import MessageError from '../../noauth/MessageError';
 // import { ProductsTable } from './ProductsTable';
 
-export const Table = ({ modified }) => {
+export const AdminTable = ({ modified }) => {
 
-    const [datos, setDatos] = useState({
+    const [data, setData] = useState({
         name: '',
         area: '',
         email: '',
@@ -19,15 +20,17 @@ export const Table = ({ modified }) => {
     })
 
     const [modal, setModal] = useState(false);
-    let [users, setUsers] = useState([]);
-    let [selectedUser, setSelectedUser] = useState({
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState({
         name: '',
         area: '',
         email: '',
         password: '',
     })
-    let [edit, setEdit] = useState('');
+    const [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
+    const [errorInput, setError] = useState(false);
+    const [message, setMessage] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
@@ -63,8 +66,8 @@ export const Table = ({ modified }) => {
 
     }
 
-    const deleteData = () => {
-        axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
+    const deleteData = async () => {
+        await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
         setModal(false)
         getData()
     }
@@ -75,29 +78,37 @@ export const Table = ({ modified }) => {
         setUsers(data);
     };
 
-    const handleDatos = (e) => {
+    const handleData = (e) => {
         const { name, area, email, password, value } = e.target
-        setDatos((prevState) => ({ ...prevState, [email]: value }))
-        setDatos((prevState) => ({ ...prevState, [name]: value }))
-        setDatos((prevState) => ({ ...prevState, [area]: value }))
-        setDatos((prevState) => ({ ...prevState, [password]: value }))
+        setData((prevState) => ({ ...prevState, [email]: value }))
+        setData((prevState) => ({ ...prevState, [name]: value }))
+        setData((prevState) => ({ ...prevState, [area]: value }))
+        setData((prevState) => ({ ...prevState, [password]: value }))
     }
 
 
-    const handleApi = () => {
-        const prueba = {
-            name: datos.name,
-            area: datos.area,
-            email: datos.email,
-            password: datos.password
-        }
-        axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', prueba)
-.then((res)=>{
-    // console.log(res.data);
-setUsers([...users, res.data ])
-})
-        // datas()
+    const handleApi = (e) => {
+        e.preventDefault()
 
+        if (data.email === '' || data.password === '' || data.name === '' || data.area === '') {
+            // setMessage(false)
+            setError(true)
+        } else {
+
+            const newUser = {
+                name: data.name,
+                area: data.area,
+                email: data.email,
+                password: data.password
+            }
+            axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', newUser)
+                .then((res) => {
+                    // console.log(res.data);
+                    setUsers([...users, res.data])
+                })
+
+            setError(false)
+        }
     }
 
     useEffect(() => {
@@ -156,12 +167,13 @@ setUsers([...users, res.data ])
     ]
     return (<>
         <div className='employee'>
-            <input name="name" value={datos.name} onChange={handleDatos} placeholder='Nombre' className='inputAdm'></input>
-            <input name="area" value={datos.area} onChange={handleDatos} placeholder='Área' className='inputAdm'></input>
-            <input name="email" value={datos.email} onChange={handleDatos} placeholder='Correo' className='inputAdm'></input>
-            <input name="password" value={datos.password} onChange={handleDatos} placeholder='Contraseña' className='inputAdm'></input>
+            <input name="name" value={data.name} onChange={handleData} placeholder='Nombre' className='inputAdm'></input>
+            <input name="area" value={data.area} onChange={handleData} placeholder='Área' className='inputAdm'></input>
+            <input name="email" value={data.email} onChange={handleData} placeholder='Correo' type='email' className='inputAdm'></input>
+            <input name="password" value={data.password} onChange={handleData} placeholder='Contraseña' className='inputAdm'></input>
             <button id="addEmployee" onClick={handleApi}>AGREGAR</button>
         </div>
+        {errorInput && <MessageError message='Llena todos los campos' />}
         <div className='Table'>
             <DataTable
                 columns={columns}
@@ -169,12 +181,12 @@ setUsers([...users, res.data ])
             />
             {
                 modal && <Modal
-                    funBorrar={deleteData}
-                    funCerrar={closeModal} />
+                    deleteFunction={deleteData}
+                    closeFunction={closeModal} />
             }
         </div>
     </>
     )
 }
 
-export default Table
+export default AdminTable

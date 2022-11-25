@@ -1,17 +1,17 @@
 import React from 'react';
-import "./style/login.css";
+import "./login.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import Logo from "./elements/Logo"
-import MessageError from "./elements/MessageError"
+import Logo from "../auth/elements/Logo"
+import MessageError from "./MessageError"
 
 
 const Welcome = () => {    
-    let [email, setEmail] = useState('');
-    let [password, setPassword] = useState('');
-    let [errorInput, setError] = useState(false);
-    let [message, setMessage] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorInput, setError] = useState(false);
+    const [message, setMessage] = useState(false);
 
     const navigate = useNavigate();
 

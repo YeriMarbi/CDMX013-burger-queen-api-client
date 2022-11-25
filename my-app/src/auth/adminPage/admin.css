@@ -19,7 +19,6 @@
   background-color: #56273B;
   font-family: 'Inter', sans-serif;
   color: rgb(255, 255, 255);
- width: 25vw;
 }
 
 [data-column-id="deletebtn"].rdt_TableCol,
@@ -32,7 +31,6 @@
 .rdt_TableRow {
   font-family: 'Inter', sans-serif;
   color: black;
-  width: 5vw;
 }
 
 .backAdmin {
@@ -153,6 +151,6 @@
   height: 5vh ;
 }
 
-.botones{
+.buttons{
   margin-left: 13vw;
 }
