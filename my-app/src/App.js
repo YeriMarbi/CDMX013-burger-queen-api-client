@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Welcome from './components/Login'
-import Admin from './components/Admin'
+import Welcome from './noauth/Login'
+import Admin from './auth/adminPage/Admin'
 
 function App() {
   return (
