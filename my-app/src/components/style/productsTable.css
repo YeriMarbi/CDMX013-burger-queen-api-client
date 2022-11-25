@@ -9,7 +9,7 @@
     font-family: 'Inter', sans-serif;
     color: rgb(255, 255, 255);
 }
-#products td:hover {background-color: #F8C365;}
+#products tr  :hover {background-color: #F8C365;}
 
 #products th, #products td {
     padding: 1vw;

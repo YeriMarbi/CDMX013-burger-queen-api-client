@@ -32,7 +32,7 @@ export const ProductsTable = () => {
                         <th className="botones"></th>
                     </tr>
                     {products.map((item, i) =>
-                        <tr key={i}>
+                        <tr className='row' key={i}>
                             <td>{item.Producto}</td>
                             <td>{item.Precio}</td>
                             <td>{item.horario}</td>

@@ -22,11 +22,7 @@ export const TableProducts = () => {
     const saveData = (row) => {
         console.log('row', row);
         setEdit('')
-        // putData(selectedProduct)
     }
-    // const handleProduct = (e) => {
-    //     setProduct(e.target.dataset.id)
-    // }
 
     const handleInputChange = (e) => {
         const producto = e.target.name
@@ -48,8 +44,6 @@ export const TableProducts = () => {
     useEffect(() => {
         getData()
     }, []);
-
-    // useEffect(() => console.log(selectedProduct), [selectedProduct])
 
     const columns = [
 
@@ -85,8 +79,6 @@ export const TableProducts = () => {
             name: '',
             id: "deletebtn",
             selector: row => <button
-            // data-id={row.id}
-            // onClick={editRow}
             >Eliminar</button>
         },
     ]
