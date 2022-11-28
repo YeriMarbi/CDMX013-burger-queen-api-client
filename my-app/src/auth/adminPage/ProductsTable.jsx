@@ -3,13 +3,15 @@ import axios from "axios"
 import "./productsTable.css"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import Modal from '../elements/Modal.jsx'
+import Modal from '../elements/Modal.jsx';
+import MessageError from '../../noauth/MessageError';
 
 export const ProductsTable = () => {
     const [products, setProducts] = useState([])
     const [modal, setModal] = useState(false);
     const [deleteProduct, setDeleteProduct] = useState(null)
-    
+    const [errorInput, setError] = useState(false);
+
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/Products'
 
     const [data, setData] = useState({
@@ -36,6 +38,9 @@ export const ProductsTable = () => {
     }, []);
 
    const handleApi=()=>{
+    if (data.product === '' || data.price === '' || data.menu === '') {
+        setError(true)
+    } else {
     const newProduct = {
         product: data.product,
         price: data.price,
@@ -44,8 +49,16 @@ export const ProductsTable = () => {
     axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products', newProduct)
         .then((res) => {
             setProducts([...products, res.data])
-        })
+            setData({
+                product: '',
+                price: '',
+                menu: '',
+            })
 
+            })
+
+
+   }
    }
 
    const showModal = (user) => {
@@ -68,10 +81,11 @@ const deleteData = async () => {
         <div className="productsTable">
             <div className='employee'>
                 <input name="product" value={data.product} onChange={handleInputChange } placeholder='Producto' className='inputAdm'></input>
-                <input name="price" value={data.price} onChange={handleInputChange} placeholder='Price' className='inputAdm'></input>
+                <input name="price" value={data.price} onChange={handleInputChange} placeholder='Precio' className='inputAdm'></input>
                 <input name="menu" value={data.menu} onChange={handleInputChange} placeholder='Menu' className='inputAdm'></input>
                 <button id="addEmployee" onClick={handleApi}>AGREGAR</button>
             </div>
+            {errorInput && <MessageError message='Llena todos los campos' />}
             <h3>Productos</h3>
             <table id='products'>
                 <tbody>
