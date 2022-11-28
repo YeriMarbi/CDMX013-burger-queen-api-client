@@ -30,7 +30,7 @@ export const AdminTable = ({ modified }) => {
     const [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
     const [errorInput, setError] = useState(false);
-    const [message, setMessage] = useState(false);
+    // const [message, setMessage] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
