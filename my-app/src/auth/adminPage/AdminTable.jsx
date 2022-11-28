@@ -30,7 +30,7 @@ export const AdminTable = ({ modified }) => {
     const [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
     const [errorInput, setError] = useState(false);
-    const [message, setMessage] = useState(false);
+    // const [message, setMessage] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
@@ -91,7 +91,6 @@ export const AdminTable = ({ modified }) => {
         e.preventDefault()
 
         if (data.email === '' || data.password === '' || data.name === '' || data.area === '') {
-            // setMessage(false)
             setError(true)
         } else {
 
@@ -103,7 +102,6 @@ export const AdminTable = ({ modified }) => {
             }
             axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', newUser)
                 .then((res) => {
-                    // console.log(res.data);
                     setUsers([...users, res.data])
                 })
 
@@ -189,4 +187,3 @@ export const AdminTable = ({ modified }) => {
     )
 }
 
-export default AdminTable
