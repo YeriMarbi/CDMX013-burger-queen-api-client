@@ -1,6 +1,6 @@
 import React from 'react';
 import "./admin.css";
-import Table from './AdminTable';
+import {AdminTable} from './AdminTable';
 import { ButtonsMenu } from './ButtonsMenu';
 import { ProductsTable } from './ProductsTable';
 import { Outlet } from 'react-router';
@@ -9,7 +9,7 @@ import { Outlet } from 'react-router';
 export const AdminEmployees = () => {
     return (
         <div className='backAdmin'>
-            <section><Table/></section>
+            <section><AdminTable/></section>
         </div>
     )
 }
