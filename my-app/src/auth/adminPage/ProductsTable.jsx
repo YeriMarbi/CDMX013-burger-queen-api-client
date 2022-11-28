@@ -88,7 +88,7 @@ const deleteData = async () => {
                             <td>{item.price}</td>
                             <td>{item.menu}</td>
                             <td><EditIcon>Editar</EditIcon></td>
-                            <td><DeleteIcon onClick={() => showModal(i)}>Borrar</DeleteIcon></td> 
+                            <td><DeleteIcon onClick={() => showModal(item)}>Borrar</DeleteIcon></td> 
                         </tr>
                     )}
                 </tbody>
