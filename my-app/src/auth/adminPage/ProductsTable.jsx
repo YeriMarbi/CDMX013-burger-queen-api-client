@@ -20,27 +20,21 @@ export const ProductsTable = () => {
 
     const handleInputChange = (e) => {
 
-        const { product, value, price, menu } = e.target
-
-        setData((prevState) => ({ ...prevState, [product]: value }))
-        setData((prevState) => ({ ...prevState, [price]: value }))
-        setData((prevState) => ({ ...prevState, [menu]: value }))
+        const { name, value} = e.target
+        setData((prevState) => ({ ...prevState, [name]: value }))
+ 
     }
 
     const getProductsData = async () => {
         const result = await axios.get(URL)
-        const data = result.data;
-        setProducts(data);
+        
+        setProducts(result.data);
     };
 
     useEffect(() => {
         getProductsData()
     }, []);
-//---------------
-    // const handleProducts=(e)=>{
-    //     setData(e.target.value)
-    // }
-//--------------------
+
    const handleApi=()=>{
     const newProduct = {
         product: data.product,
@@ -49,14 +43,12 @@ export const ProductsTable = () => {
     }
     axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products', newProduct)
         .then((res) => {
-            // console.log(res.data);
             setProducts([...products, res.data])
         })
 
    }
 
    const showModal = (user) => {
-   // console.log(user);
     setModal(true);
     setDeleteProduct(user)
 };
@@ -67,7 +59,7 @@ const closeModal = () => {
 
 const deleteData = async () => {
     console.log(deleteProduct);
-    await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/Products/${deleteProduct}`, deleteProduct)
+    await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/Products/${deleteProduct.id}`, deleteProduct)
     setModal(false)
     getProductsData()
 
