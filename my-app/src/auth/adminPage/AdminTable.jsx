@@ -99,6 +99,12 @@ export const AdminTable = ({ modified }) => {
             axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', newUser)
                 .then((res) => {
                     setUsers([...users, res.data])
+                    setData({
+                        name: '',
+                        area: '',
+                        email: '',
+                        password: '',
+                    })
                 })
 
             setError(false)
