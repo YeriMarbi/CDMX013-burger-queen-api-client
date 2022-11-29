@@ -11,13 +11,13 @@ function App() {
       <div>
        <Routes>
         <Route path='/' element={<Welcome/>} />
-       
         <Route path='admin' element={<AdminInicio/>}>
         <Route index element={<AdminEmployees/>}></Route>
           <Route path='products' element={<AdminProducts/>}></Route>
           <Route path='employees' element={<AdminEmployees/>}></Route>
         </Route>
-        <Route path='admin/products/:id/editProduct' element={<EditProducts/>}/>
+        <Route path='admin/products/:id' element={<EditProducts/>}/>
+        {/* <Route path='admin/products/:id/editProduct' element={<EditProducts/>}/> */}
        </Routes>
        </div>
     </Router>

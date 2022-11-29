@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Modal from '../elements/Modal.jsx';
 import MessageError from '../../noauth/MessageError';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 export const ProductsTable = () => {
@@ -74,7 +74,7 @@ const deleteData = async () => {
     getProductsData()
 }
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
     return (
         <div className="productsTable">
             <div className='employee'>
@@ -99,7 +99,7 @@ const navigate = useNavigate();
                             <td>{item.product}</td>
                             <td>{item.price}</td>
                             <td>{item.menu}</td>
-                            <td><Link to={`${item.product}/edit`}><EditIcon >Editar </EditIcon></Link></td>
+                            <td><Link to={`${item.product}`}><EditIcon >Editar </EditIcon></Link></td>
                             <td><DeleteIcon onClick={() => showModal(item)}>Borrar</DeleteIcon></td> 
                         </tr>
                     )};

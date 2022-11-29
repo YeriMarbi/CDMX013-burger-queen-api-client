@@ -53,7 +53,8 @@
 #exit,
 #prodBtn,
 #addEmployee,
-#emplBtn {
+#emplBtn,
+.btnEdit {
   background-color: #C77136;
   color: white;
   border-radius: 1vh;
@@ -73,7 +74,7 @@
   width: 13vw;
 }
 
-.inputAdm {
+.inputAdm, .edit input {
   padding: 1.5vh;
   border-color: #56273B;
   border-radius: 1vh;
