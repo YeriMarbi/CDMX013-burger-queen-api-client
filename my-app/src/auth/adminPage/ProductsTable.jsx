@@ -55,7 +55,9 @@ export const ProductsTable = () => {
                         menu: '',
                     })
                 })
+                setError(false)
         }
+
     }
 
     const showModal = (user) => {
@@ -108,7 +110,9 @@ export const ProductsTable = () => {
             {
                 modal && <Modal
                     deleteFunction={deleteData}
-                    closeFunction={closeModal} />
+                    closeFunction={closeModal} 
+                    message='producto'
+                    />
             }
         </div>
     )
