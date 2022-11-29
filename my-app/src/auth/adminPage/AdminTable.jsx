@@ -59,14 +59,13 @@ export const AdminTable = ({ modified }) => {
     // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
+        console.log(datafinal)
         getData()
 
     }
 
     const deleteData = async () => {
-        console.log(deleteUser);
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
-        console.log(deleteUser);
         setModal(false)
         getData()
     }

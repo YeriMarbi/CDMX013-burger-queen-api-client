@@ -155,3 +155,9 @@
 .buttons{
   margin-left: 13vw;
 }
+.productsTable {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1vh 2vw ;
+}
