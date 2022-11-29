@@ -3,6 +3,7 @@ import Welcome from './noauth/Login'
 import { AdminEmployees } from './auth/adminPage/Admin';
 import { AdminInicio } from './auth/adminPage/Admin';
 import { AdminProducts } from './auth/adminPage/Admin';
+import { EditProducts } from './auth/adminPage/EditProducts';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path='products' element={<AdminProducts/>}></Route>
           <Route path='employees' element={<AdminEmployees/>}></Route>
         </Route>
+        <Route path='admin/products/:id' element={<EditProducts/>}/>
+        {/* <Route path='admin/products/:id/editProduct' element={<EditProducts/>}/> */}
        </Routes>
        </div>
     </Router>

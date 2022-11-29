@@ -1,9 +1,13 @@
 import {render, screen } from '@testing-library/jest-dom'
-import Welcome from '../components/login'
+import Welcome from '../noauth/Login'
 import axios from "axios";
 jest.mock('axios');
-
-axios.get = jest.fn(() => { Promise.resolve({ status: 200 }) });
+const response={
+    email:'algo.com',
+    password:'lkdjla'
+}
+axios.get = jest.fn(() => { Promise.resolve({response}) });
+const spy=jest.spyOn(axios, 'get') 
 
 
 describe('Welcome component', ()=>{
