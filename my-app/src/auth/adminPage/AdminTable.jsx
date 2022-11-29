@@ -30,7 +30,7 @@ export const AdminTable = ({ modified }) => {
     const [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
     const [errorInput, setError] = useState(false);
-    const [message, setMessage] = useState(false);
+    // const [message, setMessage] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
@@ -45,12 +45,9 @@ export const AdminTable = ({ modified }) => {
 
     const handleInputChange = (e) => {
 
-        const { name, value, area, email, password } = e.target
+        const { name, value} = e.target
 
         setSelectedUser((prevState) => ({ ...prevState, [name]: value }))
-        setSelectedUser((prevState) => ({ ...prevState, [area]: value }))
-        setSelectedUser((prevState) => ({ ...prevState, [email]: value }))
-        setSelectedUser((prevState) => ({ ...prevState, [password]: value }))
     }
 
     // const getData = () => {
@@ -62,6 +59,7 @@ export const AdminTable = ({ modified }) => {
     // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
+        console.log(datafinal)
         getData()
 
     }
@@ -79,11 +77,10 @@ export const AdminTable = ({ modified }) => {
     };
 
     const handleData = (e) => {
-        const { name, area, email, password, value } = e.target
-        setData((prevState) => ({ ...prevState, [email]: value }))
+        const { name, value } = e.target
+
         setData((prevState) => ({ ...prevState, [name]: value }))
-        setData((prevState) => ({ ...prevState, [area]: value }))
-        setData((prevState) => ({ ...prevState, [password]: value }))
+       
     }
 
 
@@ -91,7 +88,6 @@ export const AdminTable = ({ modified }) => {
         e.preventDefault()
 
         if (data.email === '' || data.password === '' || data.name === '' || data.area === '') {
-            // setMessage(false)
             setError(true)
         } else {
 
@@ -103,8 +99,13 @@ export const AdminTable = ({ modified }) => {
             }
             axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/users', newUser)
                 .then((res) => {
-                    // console.log(res.data);
                     setUsers([...users, res.data])
+                    setData({
+                        name: '',
+                        area: '',
+                        email: '',
+                        password: '',
+                    })
                 })
 
             setError(false)
@@ -182,11 +183,11 @@ export const AdminTable = ({ modified }) => {
             {
                 modal && <Modal
                     deleteFunction={deleteData}
-                    closeFunction={closeModal} />
+                    closeFunction={closeModal}
+                    message='empleado' />
             }
         </div>
     </>
     )
 }
 
-export default AdminTable
