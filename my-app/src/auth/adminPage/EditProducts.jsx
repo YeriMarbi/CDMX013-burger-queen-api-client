@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import Logo from "../elements/Logo";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import './EditProducts.css'
 
 export const EditProducts = () => {
   const { id } = useParams();
@@ -36,9 +37,9 @@ export const EditProducts = () => {
   }
 
   return (
-    <section>
+    <div className="backDiv"><h1>PRODUCTOS</h1>
+    <section className="editInp">
       <div className='edit'>
-        <h1>PRODUCTOS</h1>
         <p>Producto</p>
         <input name="product" value={product.product} onChange={handleInputChange} />
         <p>Precio</p>
@@ -54,5 +55,6 @@ export const EditProducts = () => {
       </div>
       <Logo />
     </section>
+    </div>
   )
 }
