@@ -1,17 +1,24 @@
-import {render, screen } from '@testing-library/jest-dom'
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 import Welcome from '../noauth/Login'
-import axios from "axios";
+import { BrowserRouter } from 'react-router-dom'
+// import axios from "axios";
 jest.mock('axios');
-const response={
-    email:'algo.com',
-    password:'lkdjla'
-}
-axios.get = jest.fn(() => { Promise.resolve({response}) });
-const spy=jest.spyOn(axios, 'get') 
+
+// const response={
+//     email:'algo.com',
+//     password:'lkdjla'
+// }
+// axios.get = jest.fn(() => { Promise.resolve({response}) });
+// const spy=jest.spyOn(axios, 'get') 
 
 
-describe('Welcome component', ()=>{
-    render(<Welcome/>);
-    const section= screen.getByRole('section');
-    expect(section).toBeInTheDocument();
+describe('Welcome component', () => {
+    it('show', () => {
+
+        render(<Welcome />, { wrapper: BrowserRouter })
+        const section = screen.getByTestId('welcome');
+        expect(section).toBeInTheDocument();
+    })
+
 });

@@ -1,0 +1,51 @@
+.waiterView{
+    display: grid;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: #343240;
+    margin: -1vw;
+    grid-template-columns: 20vw 35vw 35vw;
+}
+
+.newOrder img{
+    padding: 0;
+    opacity: 0.6;
+    width: 15vw;
+}
+
+.newOrder{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.menu{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+.menu section{
+    align-items: flex-start;
+}
+.client{
+background-color: #D9D9D9;
+/* border-style:solid #56273B; */
+border:  0.5vh solid #56273B; 
+border-radius: 1vw; 
+height: 90vh;
+align-items: center;
+padding: 2vw;
+
+}
+
+.client section{
+    height: 70vh;
+}
+
+.total{
+    
+}

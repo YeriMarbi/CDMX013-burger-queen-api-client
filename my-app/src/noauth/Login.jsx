@@ -53,7 +53,7 @@ const Welcome = () => {
             })
     }
     }
-    return <div className='welcome'>
+    return <div data-testid='welcome' className='welcome'>
         <section>
             <h1>Bienvenidx</h1>
             {errorInput &&
