@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { useNavigate} from 'react-router-dom';
+import { Counter } from "./Counter";
 
 
 export const Waiter = () => {
@@ -16,13 +17,13 @@ export const Waiter = () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products')
         const productData = result.data
         setProducts(productData);
-        console.log(productData)
+      
     };
 
     const breakfastMenu = () =>{
         const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
         setCurrentMenu(breakfastRender)
-        console.log(breakfastRender)
+      
     }
 
     const mainMenu = () =>{
@@ -59,11 +60,7 @@ export const Waiter = () => {
                         <div className="container-item" key={item.id}>
                             <p className="productName">{item.product}</p>
                             <p>${item.price}</p>
-                            <div className="orderButton">
-                                <button data-id={item.id}>+</button>
-                                <p>0</p>
-                                <button data-id={item.id}>-</button>
-                            </div>
+                           <Counter item={item}/>
                         </div>
                       )}
                 </div>
