@@ -26,8 +26,9 @@ export const Waiter = () => {
                 <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
-                <div className='total'> TOTAL</div>
+               
                 </div>
+                <div className='total'> TOTAL</div>
                 <section className="btnOrder">
                 <button className='btnRed'>CANCELAR</button>
                 <button className='btnGreen'>ENVIAR</button>
