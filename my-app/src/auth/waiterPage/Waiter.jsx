@@ -6,14 +6,14 @@ export const Waiter = () => {
     return (
         <section className='waiterView'>
             <div className='newOrder'>
-                <button>NUEVA ORDEN</button>
+                <button className='btnViolet'>NUEVA ORDEN</button>
                 <Logo />
-                <button>SALIR</button>
+                <button className='btnExit'>SALIR</button>
             </div>
             <div className='menu'>
                 <section>
-                    <button>DESAYUNO</button>
-                    <button>24 HORAS</button>
+                    <button className='btnGray'>DESAYUNO</button>
+                    <button className='btnViolet'>24 HORAS</button>
                 </section>
                 <div>
 
@@ -21,12 +21,17 @@ export const Waiter = () => {
                 </div>
             </div>
             <div className='client'>
+                <section className='idOrder'>
                 <input type="text" />
                 <EditIcon />
-                <section>PRODUCTOS</section>
+                </section>
+                <div className='orderProducts'>COMANDA
                 <div className='total'> TOTAL</div>
-                <button>CANCELAR</button>
-                <button>ENVIAR</button>
+                </div>
+                <section className="btnOrder">
+                <button className='btnRed'>CANCELAR</button>
+                <button className='btnGreen'>ENVIAR</button>
+                </section>
             </div>
         </section>
     )
