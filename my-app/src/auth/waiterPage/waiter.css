@@ -122,3 +122,66 @@
   height: 10vh;
   justify-items: flex-end;
 }
+
+.container-menu{
+    padding: 2vw;
+    margin: 0vw 0vw 2vw -3vw;
+    display:flex;
+    flex-wrap: wrap;
+    width: 36vw;
+    height: 80vh;
+    justify-content: center;
+}
+
+.container-item{
+    background-color: #D9D9D9;
+    padding: 2vw;
+    border-radius: 0.5vw;
+    margin: 1vw 2vw 0 3vw;
+    width: 9vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container-item p {
+    margin: 0;
+    align-self: center;
+    color: #000000;
+    font-weight: bolder;
+}
+
+.orderButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1vh;
+}
+.orderButton p{
+    margin: 0 0.5vw 0 0.5vw;
+}
+
+/* GRIIIID
+.container-menu{
+    background-color: #396F27;
+    display: grid;
+    grid-template-columns: 15vw 15vw;
+    width: 35vw;
+    height: 80vh;
+    gap: 3vw;
+}
+
+.container-item{
+    background-color: #656B81;
+    padding: 2vw;
+    border: #5d276f;
+    border-radius: 2vw;
+    margin: 1px;
+    width: 12vw;
+    height: 7vh;
+}
+.container-item p {
+    margin: 0;
+    display: flex;
+    align-self: center;
+} */
