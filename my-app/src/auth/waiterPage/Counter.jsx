@@ -1,25 +1,25 @@
-import { useState } from "react"
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const Counter = ({ productName, productPrice, deleteItem}) => {
-    let [value, setValue] = useState(1)
-
+export const Counter = ({ item, deleteItem, addProductOrder}) => {
+  
     const addProduct = () => {
-        setValue(value + 1)
+        // setValue(value + 1)
+        addProductOrder(item.product)
     }
 
     const removeProduct = () => {
-        setValue(value - 1)
+        // setValue(value - 1)
     }
 
     return (
         <div className="orderButton">
-                <p>{productName} </p>
-                <p> $ {productPrice}</p>
+
+            <div className='productsOrder'>{item.product.product} </div>
+            <p> $ {item.product.price}</p>
             <button onClick={addProduct}  >+</button>
-            <p>{value < 1 ? value = 1 : value}</p>
+            <p>{item.qty}</p>
             <button onClick={removeProduct} >-</button>
-            <DeleteIcon onClick={deleteItem}/>
+            <DeleteIcon onClick={deleteItem} />
         </div>
     )
 }
