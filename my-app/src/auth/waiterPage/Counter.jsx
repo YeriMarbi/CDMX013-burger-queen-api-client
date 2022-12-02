@@ -1,7 +1,8 @@
 import { useState } from "react"
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export const Counter = ({ productName, productPrice}) => {
-    let [value, setValue] = useState(0)
+export const Counter = ({ productName, productPrice, deleteItem}) => {
+    let [value, setValue] = useState(1)
 
     const addProduct = () => {
         setValue(value + 1)
@@ -16,8 +17,9 @@ export const Counter = ({ productName, productPrice}) => {
                 <p>{productName}</p>
                 <p>{productPrice}</p>
             <button onClick={addProduct}  >+</button>
-            <p>{value < 1 ? value = 0 : value}</p>
+            <p>{value < 1 ? value = 1 : value}</p>
             <button onClick={removeProduct} >-</button>
+            <DeleteIcon onClick={deleteItem}/>
         </div>
     )
 }

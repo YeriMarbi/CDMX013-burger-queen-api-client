@@ -156,3 +156,8 @@
     align-self: center;
     color: #343240;
 } 
+
+.orderButton{
+    display: flex;
+    flex-direction: row;
+}

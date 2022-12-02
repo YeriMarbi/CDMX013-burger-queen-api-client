@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Counter } from "./Counter";
 
+
 export const Waiter = () => {
     const [products, setProducts] = useState([])
     const [currentMenu, setCurrentMenu] = useState([])
@@ -43,12 +44,17 @@ export const Waiter = () => {
     }
 
     const addProductOrder = (product) => {
+        if(!productsOrder.includes(product)){
    setProductsOrder((state)=>{
     return [...state, product]
    })
         setShowContent(true)
     }
+    }
 
+const deleteProduct= (item) => {
+console.log(item)
+}
     console.log(productsOrder);
     return (
         <section className='waiterView'>
@@ -78,7 +84,8 @@ export const Waiter = () => {
                     <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
-                    {showContent && productsOrder.map((item) => <Counter productName={item.product} productPrice={item.price} key={item.id}/>)}
+                    {showContent && productsOrder.map((item) => <Counter productName={item.product} productPrice={item.price} key={item.id} deleteItem={()=>deleteProduct(item)}/>  )}
+                
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">
