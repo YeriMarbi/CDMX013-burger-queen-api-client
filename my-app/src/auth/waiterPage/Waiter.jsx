@@ -10,10 +10,7 @@ import { Counter } from "./Counter";
 export const Waiter = () => {
     const [products, setProducts] = useState([])
     const [currentMenu, setCurrentMenu] = useState([])
-    const [productOrder, setProductOrder] = useState({
-        product: [],
-        // price: []
-    })
+    const [productsOrder, setProductsOrder] = useState([])
     const [showContent, setShowContent] = useState(false)
 
 
@@ -45,20 +42,14 @@ export const Waiter = () => {
         navigate('/')
     }
 
-    const addProductOrder = (productOrder) => {
-        // console.log(productOrder.price)
-        setProductOrder({...productOrder,
-            product:[productOrder.product],
-            // price: {productOrder.price}
-        })
+    const addProductOrder = (product) => {
+   setProductsOrder((state)=>{
+    return [...state, product]
+   })
         setShowContent(true)
     }
-    console.log(productOrder);
 
-    // const addProudctOrder = (item) =>{
-    //     return {product:item.product, price:item.price}
-    // }
-
+    console.log(productsOrder);
     return (
         <section className='waiterView'>
             <div className='newOrder'>
@@ -74,7 +65,7 @@ export const Waiter = () => {
                 <div className="container-menu">
                     {currentMenu.map((item) =>
                         <button className="container-item"
-                            onClick={() => addProductOrder({product:item.product, price:item.price})} key={item.id}>
+                            onClick={() => addProductOrder(item)} key={item.id}>
                             <p className="productName">{item.product}</p>
                             <p>${item.price}</p>
                         </button>
@@ -87,7 +78,7 @@ export const Waiter = () => {
                     <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
-                    {showContent && <Counter productName={productOrder.product} productPrice={productOrder.price}/>}
+                    {showContent && <Counter productName={productsOrder.product} productPrice={productsOrder.price}/>}
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">
