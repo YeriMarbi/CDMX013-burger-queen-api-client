@@ -116,6 +116,7 @@
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
+   align-content: space-between;
 }
 
 .orderProducts p{
@@ -129,15 +130,14 @@
 
 .container-menu{
     display: grid;
-    grid-template-columns: 15vw 15vw;
-    grid-template-rows: 10vw 10vw 10vw;
+    grid-template-columns: repeat(2, 15vw);
+    grid-template-rows: repeat(3, 10vw);
     width: 35vw;
     height: 80vh;
     gap: 1.5vw;
     row-gap: -30vh;
     justify-content: center;
     padding: 1vh;
- 
 }
 
 .container-item{
@@ -149,15 +149,27 @@
     height: 15vh;
     font-size: 1.2em;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   flex-direction: column;
 }
+
+
 .container-item p {
+   
     margin: 0;
     display: flex;
-    align-self: center;
+
     color: #343240;
+
 } 
 
 .orderButton{
     display: flex;
     flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
 }
+
+

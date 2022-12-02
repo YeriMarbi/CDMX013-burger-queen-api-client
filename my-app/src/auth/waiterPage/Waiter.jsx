@@ -80,10 +80,10 @@ console.log(item)
             </div>
             <div className='client'>
                 <section className='idOrder'>
-                    <input type="text" />
+                    <input type="text" placeholder="Customer name"/>
                     <EditIcon />
                 </section>
-                <div className='orderProducts'>COMANDA
+                <div className='orderProducts'>
                     {showContent && productsOrder.map((item) => <Counter productName={item.product} productPrice={item.price} key={item.id} deleteItem={()=>deleteProduct(item)}/>  )}
                 
                 </div>

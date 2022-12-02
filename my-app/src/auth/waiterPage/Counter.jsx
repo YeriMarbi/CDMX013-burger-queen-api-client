@@ -14,8 +14,8 @@ export const Counter = ({ productName, productPrice, deleteItem}) => {
 
     return (
         <div className="orderButton">
-                <p>{productName}</p>
-                <p>{productPrice}</p>
+                <p>{productName} </p>
+                <p> $ {productPrice}</p>
             <button onClick={addProduct}  >+</button>
             <p>{value < 1 ? value = 1 : value}</p>
             <button onClick={removeProduct} >-</button>
