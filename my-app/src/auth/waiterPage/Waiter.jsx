@@ -78,7 +78,7 @@ export const Waiter = () => {
                     <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
-                    {showContent && <Counter productName={productsOrder.product} productPrice={productsOrder.price}/>}
+                    {showContent && productsOrder.map((item) => <Counter productName={item.product} productPrice={item.price} key={item.id}/>)}
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">

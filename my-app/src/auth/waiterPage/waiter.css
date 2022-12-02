@@ -117,59 +117,27 @@
     display: flex;
     flex-direction: column;
 }
+
+.orderProducts p{
+    color: #343240;
+}
 .total{
   text-align: right;
   height: 10vh;
   justify-items: flex-end;
 }
 
-/* .container-menu{
-    display: grid;
-    margin: 0vw 0vw 2vw -3vw;
-    
-    flex-wrap: wrap;
-    width: 36vw;
-    height: 80vh;
-    background-color: #396F27;
-    justify-content: center;
-}
-
-.container-item{
-    background-color: #D9D9D9;
-    padding: 2vw;
-    border-radius: 0.5vw;
-    margin: 1vw 2vw 0 3vw;
-    width: 15vw;
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.container-item p {
-    margin: 0;
-    align-self: center;
-    color: #000000;
-    font-weight: bolder;
-}
-
-.orderButton{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 1vh;
-}
-.orderButton p{
-    margin: 0 0.5vw 0 0.5vw;
-} */
-
-
 .container-menu{
     display: grid;
     grid-template-columns: 15vw 15vw;
+    grid-template-rows: 10vw 10vw 10vw;
     width: 35vw;
     height: 80vh;
     gap: 1.5vw;
     row-gap: -30vh;
+    justify-content: center;
+    padding: 1vh;
+ 
 }
 
 .container-item{
@@ -179,6 +147,8 @@
     margin: 1px;
     width: 15vw;
     height: 15vh;
+    font-size: 1.2em;
+    text-align: center;
 }
 .container-item p {
     margin: 0;
@@ -186,7 +156,3 @@
     align-self: center;
     color: #343240;
 } 
-
-p{
-    color: #343240;
-}
