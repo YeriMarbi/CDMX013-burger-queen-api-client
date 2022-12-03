@@ -1,6 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const Counter = ({ item, deleteItem, addProductOrder}) => {
+export const Counter = ({ item, deleteItem, addProductOrder, deleteProductOrder}) => {
   
     const addProduct = () => {
         // setValue(value + 1)
@@ -9,6 +9,7 @@ export const Counter = ({ item, deleteItem, addProductOrder}) => {
 
     const removeProduct = () => {
         // setValue(value - 1)
+        deleteProductOrder(item.product)
     }
 
     return (
@@ -17,7 +18,8 @@ export const Counter = ({ item, deleteItem, addProductOrder}) => {
             <div className='productsOrder'>{item.product.product} </div>
             <p> $ {item.product.price}</p>
             <button onClick={addProduct}  >+</button>
-            <p>{item.qty}</p>
+            <p>{item.qty<1?item.qty=1:item.qty}</p>
+            {/* <p>{item.qty}</p> */}
             <button onClick={removeProduct} >-</button>
             <DeleteIcon onClick={deleteItem} />
         </div>
