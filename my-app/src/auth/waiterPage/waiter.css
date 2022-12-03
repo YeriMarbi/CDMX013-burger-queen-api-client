@@ -9,7 +9,7 @@
     height: 95vh;
     background-color: #343240;
     margin: -1vw;
-    grid-template-columns: 20vw 35vw 35vw;
+    grid-template-columns: 27vw 35vw 35vw;
     padding: 2vw;
 }
 
@@ -26,22 +26,23 @@
     height: 87vh;
     align-items: center;
 }
-.newOrder button{
-    width:20vw;
+
+.newOrder button {
+    width: 20vw;
     padding: 3vh;
     align-items: stretch;
 }
+
 .menu {
     display: flex;
     flex-direction: column;
     height: 87vh;
-
+    align-items: stretch;
 }
 
 .menu section {
     display: flex;
     justify-content: space-around;
-    align-items: stretch;
 }
 
 .client {
@@ -107,52 +108,69 @@
     display: flex;
     justify-content: space-around;
 }
-.btnOrder button{
+
+.btnOrder button {
     width: 13vw;
 }
+
 .orderProducts {
     height: 50vh;
     padding-bottom: 5vh;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
+    align-content: space-between;
 }
 
-.orderProducts p{
+.orderProducts p {
     color: #343240;
 }
-.total{
-  text-align: right;
-  height: 10vh;
-  justify-items: flex-end;
+
+.total {
+    text-align: right;
+    height: 10vh;
+    justify-items: flex-end;
 }
 
-.container-menu{
+.container-menu {
     display: grid;
-    grid-template-columns: 15vw 15vw;
-    grid-template-rows: 10vw 10vw 10vw;
-    width: 35vw;
-    height: 80vh;
-    gap: 1.5vw;
-    row-gap: -30vh;
-    justify-content: center;
-    padding: 1vh;
- 
+    grid-template-columns: repeat(2, 13vw);
+    grid-template-rows: repeat(3, 15vh);
+    gap: 2vw;
+    justify-content:space-around;
+    padding-right: 3.4vh;
+    padding-top: 3vh;
 }
 
-.container-item{
+.container-item {
     background-color: #d5d8e2;
     border: #5d276f;
     border-radius: 0.5vw;
-    margin: 1px;
     width: 15vw;
-    height: 15vh;
     font-size: 1.2em;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
+
 .container-item p {
+
     margin: 0;
     display: flex;
-    align-self: center;
+
     color: #343240;
-} 
+
+}
+
+.orderButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productsOrder {
+    width: 15vw;
+}

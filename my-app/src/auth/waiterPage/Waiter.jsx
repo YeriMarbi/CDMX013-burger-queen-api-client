@@ -7,9 +7,10 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Counter } from "./Counter";
 
+
 export const Waiter = () => {
-    const [products, setProducts] = useState([])
-    const [currentMenu, setCurrentMenu] = useState([])
+    const [products, setProducts] = useState([]);
+    const [currentMenu, setCurrentMenu] = useState([]);
     const [productsOrder, setProductsOrder] = useState([])
     const [showContent, setShowContent] = useState(false)
 
@@ -18,13 +19,11 @@ export const Waiter = () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products')
         const productData = result.data
         setProducts(productData);
-
     };
 
     const breakfastMenu = () => {
         const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
         setCurrentMenu(breakfastRender)
-
     }
 
     const mainMenu = () => {
@@ -43,13 +42,33 @@ export const Waiter = () => {
     }
 
     const addProductOrder = (product) => {
-   setProductsOrder((state)=>{
-    return [...state, product]
-   })
-        setShowContent(true)
+        if (!productsOrder.find((item) => item.product.id === product.id)) {
+            setProductsOrder((state) => {
+                return [...state, { product, qty: 1 }]
+            })
+            setShowContent(true)
+        } else {
+            const currentProduct = productsOrder.find((item) => item.product.id === product.id)
+            setProductsOrder((state) => {
+
+                return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty + 1 }]
+            })
+        }
     }
 
-    console.log(productsOrder);
+    const deleteProductOrder= (product) => {
+        const currentProduct = productsOrder.find((item) => item.product.id === product.id)
+        setProductsOrder((state) => {
+
+            return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty - 1 }]
+        })
+    }
+
+    const deleteProduct=(product) => {
+        console.log(product);
+    }
+
+    console.log(productsOrder,'::::::::::.');
     return (
         <section className='waiterView'>
             <div className='newOrder'>
@@ -64,8 +83,7 @@ export const Waiter = () => {
                 </section>
                 <div className="container-menu">
                     {currentMenu.map((item) =>
-                        <button className="container-item"
-                            onClick={() => addProductOrder(item)} key={item.id}>
+                        <button className="container-item" onClick={() => addProductOrder(item)} key={item.id}>
                             <p className="productName">{item.product}</p>
                             <p>${item.price}</p>
                         </button>
@@ -74,11 +92,13 @@ export const Waiter = () => {
             </div>
             <div className='client'>
                 <section className='idOrder'>
-                    <input type="text" />
+                    <input type="text" placeholder="Customer name" />
                     <EditIcon />
                 </section>
-                <div className='orderProducts'>COMANDA
-                    {showContent && productsOrder.map((item) => <Counter productName={item.product} productPrice={item.price} key={item.id}/>)}
+                <div className='orderProducts'>
+                    {showContent && productsOrder.map((item) => <Counter addProductOrder={addProductOrder} 
+                    deleteProductOrder={deleteProductOrder} item={item} key={item.product.id} 
+                    deleteItem={() => deleteProduct(item.product)} />)}
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">
