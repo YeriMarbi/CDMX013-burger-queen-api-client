@@ -71,6 +71,14 @@ export const Waiter = () => {
       setProductsOrder(filterProducts)
     }
 
+    const totalPrice= () => {
+        return productsOrder.reduce ((prev, item) => prev + item.qty * item.product.price,0);
+    }
+
+    const clearOrder = () => {
+        setProductsOrder([]);
+    }
+
     console.log(productsOrder,'::::::::::.');
     return (
         <section className='waiterView'>
@@ -103,10 +111,10 @@ export const Waiter = () => {
                     deleteProductOrder={deleteProductOrder} item={item} key={item.product.id} 
                     deleteItem={() => deleteProduct(item.product)} />)}
                 </div>
-                <div className='total'> TOTAL</div>
+                <div className='total'> TOTAL ${totalPrice()}.00</div>
                 <section className="btnOrder">
-                    <button className='btnRed'>CANCELAR</button>
-                    <button className='btnGreen'>ENVIAR</button>
+                    <button className='btnRed'onClick={clearOrder}>CANCELAR</button>
+                    <button className='btnGreen' >ENVIAR</button>
                 </section>
             </div>
         </section>
