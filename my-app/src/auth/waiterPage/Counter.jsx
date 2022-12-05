@@ -16,7 +16,7 @@ export const Counter = ({ item, deleteItem, addProductOrder, deleteProductOrder}
         <div className="orderButton">
 
             <div className='productsOrder'>{item.product.product} </div>
-            <p> $ {item.product.price}</p>
+            <p> $ {item.product.price * item.qty}</p>
             <button onClick={addProduct}  >+</button>
             <p>{item.qty<1?item.qty=1:item.qty}</p>
             {/* <p>{item.qty}</p> */}
