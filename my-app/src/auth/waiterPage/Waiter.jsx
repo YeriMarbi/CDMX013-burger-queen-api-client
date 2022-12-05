@@ -53,7 +53,15 @@ export const Waiter = () => {
             const currentProduct = productsOrder.find((item) => item.product.id === product.id)
             setProductsOrder((state) => {
 
-                return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty + 1 }]
+                const newCurrentProduct = state.map((item) => {
+                    if (item.product.id === product.id) {
+                        return { product, qty: currentProduct.qty + 1 }
+                    } else {
+                        return item }
+                });
+                return newCurrentProduct
+
+                // return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty + 1 }]
             })
         }
     }
@@ -62,9 +70,10 @@ export const Waiter = () => {
         const currentProduct = productsOrder.find((item) => item.product.id === product.id)
         setProductsOrder((state) => {
             const newCurrentProduct = state.map((item) => {
-                const nuevoProducto = item
-                nuevoProducto.qty = 5
-                return nuevoProducto
+                if (item.product.id === product.id) {
+                    return { product, qty: currentProduct.qty - 1 }
+                } else {
+                    return item }
             });
             return newCurrentProduct
             // return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty - 1 }]
@@ -81,8 +90,12 @@ export const Waiter = () => {
     }
 
     const handleApi = () => {
+        const date = new Date();
+        const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
         const clientOrder = {
             name: client,
+            hour: hour,
             items: productsOrder,
             total: totalPrice()
         }
