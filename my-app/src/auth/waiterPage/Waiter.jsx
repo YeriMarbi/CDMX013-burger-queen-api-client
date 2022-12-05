@@ -1,5 +1,4 @@
 import Logo from "../elements/Logo"
-import EditIcon from '@mui/icons-material/Edit';
 import './waiter.css'
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -13,6 +12,7 @@ export const Waiter = () => {
     const [currentMenu, setCurrentMenu] = useState([]);
     const [productsOrder, setProductsOrder] = useState([])
     const [showContent, setShowContent] = useState(false)
+    const [client, setClient] = useState("");
 
 
     const getProductsData = async () => {
@@ -27,7 +27,7 @@ export const Waiter = () => {
     }
 
     const mainMenu = () => {
-        const mainMenuRender = products.filter((products => products.menu === '24 hrs.'));
+        const mainMenuRender = products.filter((products => products.menu === '24hrs.'));
         setCurrentMenu(mainMenuRender)
     }
 
@@ -75,6 +75,14 @@ export const Waiter = () => {
         return productsOrder.reduce ((prev, item) => prev + item.qty * item.product.price,0);
     }
 
+    const clientOrder ={
+        name:client,
+        items: productsOrder,
+        total: totalPrice()
+    } 
+
+    console.log(clientOrder)
+
     const clearOrder = () => {
         setProductsOrder([]);
     }
@@ -103,8 +111,7 @@ export const Waiter = () => {
             </div>
             <div className='client'>
                 <section className='idOrder'>
-                    <input type="text" placeholder="Customer name" />
-                    <EditIcon />
+                    <input type="text" placeholder="Customer name" value={client} onChange={(e)=>setClient(e.target.value)}/>
                 </section>
                 <div className='orderProducts'>
                     {showContent && productsOrder.map((item) => <Counter addProductOrder={addProductOrder} 
