@@ -66,6 +66,9 @@ export const Waiter = () => {
 
     const deleteProduct=(product) => {
         console.log(product);
+        const filterProducts=productsOrder.filter((item)=>item.product.id !== product.id)
+
+      setProductsOrder(filterProducts)
     }
 
     console.log(productsOrder,'::::::::::.');
