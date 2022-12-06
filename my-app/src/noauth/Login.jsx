@@ -40,7 +40,7 @@ const Welcome = () => {
                             navigate('admin')
                         }
                         if (element.area === 'Cocina') {
-                            console.log('Cocina');
+                            navigate('kitchen')
                         }
                         if (element.area === 'Meserx') {
                             navigate('waiter')

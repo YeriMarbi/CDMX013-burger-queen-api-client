@@ -101,7 +101,7 @@ export const Waiter = () => {
     console.log(productsOrder, '::::::::::.');
     return (
         <section className='waiterView'>
-            <Buttons/>
+            <Buttons message='NUEVA ORDEN'/>
             <div className='menu'>
                 <section>
                     <button className='btnGray' onClick={breakfastMenu}>DESAYUNO</button>
