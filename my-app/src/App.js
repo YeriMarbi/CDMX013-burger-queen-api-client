@@ -4,7 +4,8 @@ import { AdminEmployees } from './auth/adminPage/Admin';
 import { AdminInicio } from './auth/adminPage/Admin';
 import { AdminProducts } from './auth/adminPage/Admin';
 import { EditProducts } from './auth/adminPage/EditProducts';
-import { Waiter } from './auth/waiterPage/Waiter'
+import { Waiter } from './auth/waiterPage/Waiter';
+import {Kitchen} from './auth/KitchenPage/kitchen'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Route>
           <Route path='admin/products/:id' element={<EditProducts />} />
           <Route path='waiter' element={<Waiter />} />
+          <Route path='kitchen' element={<Kitchen />} />
         </Routes>
       </div>
     </Router>
