@@ -42,8 +42,8 @@ const Welcome = () => {
                         if (element.area === 'Cocina') {
                             console.log('Cocina');
                         }
-                        if (element.area === 'Mesero') {
-                            console.log('Mesas');
+                        if (element.area === 'Meserx') {
+                            navigate('waiter')
                         }
                     } else {
                         setMessage(true)
@@ -53,7 +53,7 @@ const Welcome = () => {
             })
     }
     }
-    return <div className='welcome'>
+    return <div data-testid='welcome' className='welcome'>
         <section>
             <h1>Bienvenidx</h1>
             {errorInput &&
