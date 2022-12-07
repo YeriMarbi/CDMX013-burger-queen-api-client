@@ -23,23 +23,24 @@ export const Kitchen = () => {
     const deleteOrder = async (item) => {
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
         getOrders()
-
-        console.log(item)
     }
-    // const addKeyProduct = (product) => {
-    //     const currentProduct = productsOrder.find((item) => item.product.id === product.id)
-    //     setProductsOrder((state) => {
-    //         const newCurrentProduct = state.map((item) => {
-    //             if (item.product.id === product.id) {
-    //                 return { product, qty: currentProduct.qty - 1 }
-    //             } else {
-    //                 return item
-    //             }
-    //         });
-    //         return newCurrentProduct
-    //     })
-    // }
-    // console.log(':::::::::::::::', orderKitchen[0].items[0].product.product)
+
+    const addKeyProduct = (order) => {
+        console.log(order, ':::::::::ORDER')
+        const date = new Date();
+        const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+        const newKey = orderKitchen.map((item) => {
+            if (order.id === item.id) {
+                return { ...item, done: hour }
+            }
+            return item
+        })
+
+        return setOrderKitchen(newKey)
+    }
+    console.log(orderKitchen, ':::::KITCHEN')
+
     return (
         <section className="backKitchen">
             <Buttons message='PEDIDOS' />
@@ -65,11 +66,11 @@ export const Kitchen = () => {
                                     <div className="OrderItem" key={element.id}>
                                         <p> {element.qty} </p>
                                         <p> {element.product.product}</p>
-                                       
-                                    </div> 
+
+                                    </div>
                                 )}
                             </div>
-                          <button key={item.id}><CheckIcon className='checkIcon' /></button>
+                            <button className='done' key={item.id} onClick={() => addKeyProduct(item)}><CheckIcon className='checkIcon' /></button>
                             {/* <Timer/> */}
                         </div>
                     )}
