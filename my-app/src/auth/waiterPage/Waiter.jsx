@@ -95,10 +95,8 @@ export const Waiter = () => {
 
     const showModal = (user) => {
         setModal(true);
-
     };
 
-    console.log(productsOrder, '::::::::::.');
     return (
         <section className='waiterView'>
             <Buttons message='NUEVA ORDEN'/>

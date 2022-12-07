@@ -4,6 +4,7 @@ import './kitchen.css'
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
+// import {Timer} from './Timer'
 
 export const Kitchen = () => {
 
@@ -18,6 +19,26 @@ export const Kitchen = () => {
         getOrders()
     }, []);
 
+
+    const deleteOrder = async (item) => {
+        await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
+        getOrders()
+
+        console.log(item)
+    }
+    // const addKeyProduct = (product) => {
+    //     const currentProduct = productsOrder.find((item) => item.product.id === product.id)
+    //     setProductsOrder((state) => {
+    //         const newCurrentProduct = state.map((item) => {
+    //             if (item.product.id === product.id) {
+    //                 return { product, qty: currentProduct.qty - 1 }
+    //             } else {
+    //                 return item
+    //             }
+    //         });
+    //         return newCurrentProduct
+    //     })
+    // }
     // console.log(':::::::::::::::', orderKitchen[0].items[0].product.product)
     return (
         <section className="backKitchen">
@@ -35,7 +56,7 @@ export const Kitchen = () => {
                     {orderKitchen.length > 0 && orderKitchen.map((item) =>
                         <div className='kitchenTicket' key={item.id} >
                             <section className="headerOrder">
-                                <CloseIcon key={item.id} />
+                                <button key={item.id} onClick={() => deleteOrder(item)}> <CloseIcon /></button>
                                 <p> {item.name}</p>
                                 <p>{item.hour}</p>
                             </section>
@@ -44,10 +65,12 @@ export const Kitchen = () => {
                                     <div className="OrderItem" key={element.id}>
                                         <p> {element.qty} </p>
                                         <p> {element.product.product}</p>
-                                    </div>
+                                       
+                                    </div> 
                                 )}
                             </div>
-                            <CheckIcon key={item.id} className='checkIcon' />
+                          <button key={item.id}><CheckIcon className='checkIcon' /></button>
+                            {/* <Timer/> */}
                         </div>
                     )}
                 </section>
