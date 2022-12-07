@@ -4,6 +4,7 @@ import './kitchen.css'
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
+// import {Timer} from './Timer'
 
 export const Kitchen = () => {
 
@@ -18,7 +19,28 @@ export const Kitchen = () => {
         getOrders()
     }, []);
 
-    // console.log(':::::::::::::::', orderKitchen[0].items[0].product.product)
+
+    const deleteOrder = async (item) => {
+        await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
+        getOrders()
+    }
+
+    const addKeyProduct = (order) => {
+        console.log(order, ':::::::::ORDER')
+        const date = new Date();
+        const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+        const newKey = orderKitchen.map((item) => {
+            if (order.id === item.id) {
+                return { ...item, done: hour }
+            }
+            return item
+        })
+
+        return setOrderKitchen(newKey)
+    }
+    console.log(orderKitchen, ':::::KITCHEN')
+
     return (
         <section className="backKitchen">
             <Buttons message='PEDIDOS' />
@@ -35,7 +57,7 @@ export const Kitchen = () => {
                     {orderKitchen.length > 0 && orderKitchen.map((item) =>
                         <div className='kitchenTicket' key={item.id} >
                             <section className="headerOrder">
-                                <CloseIcon key={item.id} />
+                                <button key={item.id} onClick={() => deleteOrder(item)}> <CloseIcon /></button>
                                 <p> {item.name}</p>
                                 <p>{item.hour}</p>
                             </section>
@@ -44,10 +66,12 @@ export const Kitchen = () => {
                                     <div className="OrderItem" key={element.id}>
                                         <p> {element.qty} </p>
                                         <p> {element.product.product}</p>
+
                                     </div>
                                 )}
                             </div>
-                            <CheckIcon key={item.id} className='checkIcon' />
+                            <button className='done' key={item.id} onClick={() => addKeyProduct(item)}><CheckIcon className='checkIcon' /></button>
+                            {/* <Timer/> */}
                         </div>
                     )}
                 </section>
