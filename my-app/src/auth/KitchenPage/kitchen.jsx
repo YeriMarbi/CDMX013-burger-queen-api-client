@@ -24,8 +24,12 @@ export const Kitchen = () => {
             <Buttons message='PEDIDOS' />
             <div className="kitchen">
                 <div className="kitchenButtons">
-                    <button className='btnPending'>PENDIENTES</button>
-                    <button className='btnReady' >LISTOS</button>
+                    <button className='btnPending'>
+                        <p>PENDIENTES</p>
+                    </button>
+                    <button className='btnReady' >
+                        <p>LISTOS</p>
+                    </button>
                 </div>
                 <section className="orders">
                     {orderKitchen.length > 0 && orderKitchen.map((item) =>
@@ -38,15 +42,14 @@ export const Kitchen = () => {
                             <div>
                                 {item.items.map((element) =>
                                     <div className="OrderItem" key={element.id}>
-                                       <p> {element.qty} </p>
-                                       <p> {element.product.product}</p>
+                                        <p> {element.qty} </p>
+                                        <p> {element.product.product}</p>
                                     </div>
                                 )}
                             </div>
-                            <CheckIcon key={item.id} />
+                            <CheckIcon key={item.id} className='checkIcon' />
                         </div>
                     )}
-
                 </section>
             </div>
         </section>

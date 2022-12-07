@@ -10,9 +10,9 @@ export const Buttons = ({message}) => {
 
     return (
         <div className='newOrder'>
-            <button className='btnViolet'>NUEVA ORDEN</button>
+            <button className='btnViolet'>{message}</button>
             <Logo />
-            <button className='btnExit' onClick={logOut}>{message}</button>
+            <button className='btnExit' onClick={logOut}>SALIR</button>
         </div>
     )
 }
