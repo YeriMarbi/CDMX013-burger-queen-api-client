@@ -9,22 +9,23 @@ import CheckIcon from '@mui/icons-material/Check';
 export const Kitchen = () => {
 
     const [ordersPending, setOrdersPending] = useState([]);
-    const[ordersDone, setOrdersDone]=useState(true);
+  
 
     const getOrders = async () => {
-        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder')
+        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=pending')
         const orders=result.data;
             setOrdersPending(orders.filter((orders => orders.status === 'pending')));
+        
     };
 
     const done =  async () => {
             const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=done')
             setOrdersPending(result.data)
+            
     }
 
     useEffect(() => {
         getOrders()
-        done()
     }, []);
 
 
@@ -53,7 +54,7 @@ export const Kitchen = () => {
             <Buttons message='PEDIDOS' />
             <div className="kitchen">
                 <div className="kitchenButtons">
-                    <button  className='btnPending'>
+                    <button onClick={()=>getOrders()} className='btnPending'>
                         <p>PENDIENTES</p>
                     </button>
                     <button onClick={()=>done()} className='btnReady' >
