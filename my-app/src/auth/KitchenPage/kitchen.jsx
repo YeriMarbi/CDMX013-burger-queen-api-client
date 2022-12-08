@@ -4,7 +4,7 @@ import './kitchen.css'
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
-// import {Timer} from './Timer'
+
 
 export const Kitchen = () => {
 
@@ -71,7 +71,6 @@ export const Kitchen = () => {
                                 )}
                             </div>
                             <button className='done' key={item.id} onClick={() => addKeyProduct(item)}><CheckIcon className='checkIcon' /></button>
-                            {/* <Timer/> */}
                         </div>
                     )}
                 </section>
