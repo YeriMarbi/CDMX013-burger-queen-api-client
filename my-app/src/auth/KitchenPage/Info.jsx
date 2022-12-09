@@ -1,4 +1,4 @@
-export const Info = ({ item }) => {
+export const Info = ({ item}) => {
 
     return (
 

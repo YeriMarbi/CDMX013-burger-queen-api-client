@@ -123,6 +123,8 @@
     position: absolute;
     bottom: 0;
     text-align: center;
+    background-color: #eaac408d;
+ 
 }
 
 
@@ -130,12 +132,14 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    background: none;
+    z-index:1;
 }
 
 .allTimes {
     display: flex;
     flex-direction: row;
     margin-top: -3vh;
-padding-bottom: 1.5vh;
+    padding-bottom: 1.5vh;
     text-align: center;
 }
