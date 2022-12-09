@@ -74,7 +74,8 @@ export const Waiter = () => {
             name: client,
             hour: hour,
             items: productsOrder,
-            total: totalPrice()
+            total: totalPrice(),
+            status:'pending'
         }
         console.log(clientOrder)
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder', clientOrder)
@@ -93,7 +94,7 @@ export const Waiter = () => {
         setModal(false);
     }
 
-    const showModal = (user) => {
+    const showModal = () => {
         setModal(true);
     };
 
