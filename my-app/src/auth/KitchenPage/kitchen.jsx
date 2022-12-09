@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import InfoIcon from '@mui/icons-material/Info';
-// import {Timer} from './Timer'
+import { Info } from './Info'
 
 export const Kitchen = () => {
 
@@ -69,12 +69,8 @@ export const Kitchen = () => {
     }
 
     const info = (item) => {
-       if(item.id === ordersPending.id)
-        if (infoOrder === false ) {
-            setInfoOrder(true)
-        } else {
-            setInfoOrder(false)
-        }
+        //    if(item.id === ordersPending.id)
+        setInfoOrder(!infoOrder)
 
     }
     // console.log(orderKitchen, ':::::KITCHEN')
@@ -109,14 +105,8 @@ export const Kitchen = () => {
                             </div>
                             {buttonDone ? <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button> :
                                 <InfoIcon onClick={() => info(item)}></InfoIcon>}
-                                {infoOrder ? <div className="orderTime">
-                                <p>{item.time}</p>
-                                <p>Llegó: {item.hour}</p>
-                                <p>Finalizó: {item.done}</p>
-                            </div>
-                                : null
+                            {infoOrder ? <Info item={item} /> : null}
                             
-                            }
                         </div>
                     )}
                 </section>
@@ -125,3 +115,4 @@ export const Kitchen = () => {
     )
 
 }
+
