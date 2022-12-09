@@ -73,6 +73,7 @@ export const Waiter = () => {
         const clientOrder = {
             name: client,
             hour: hour,
+            date: date,
             items: productsOrder,
             total: totalPrice(),
             status:'pending'

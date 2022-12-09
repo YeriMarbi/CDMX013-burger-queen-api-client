@@ -65,7 +65,7 @@
     border-radius: 1vw;
     border: 0.5vh solid #EAAC40;
     position: relative;
-    padding-bottom: 5vh;
+    padding-bottom: 20vh;
 }
 
 .kitchenTicket p {
@@ -119,4 +119,9 @@
     background: none;
     border: none;
     padding: 1vh;
+}
+
+.orderTime{
+    position: absolute;
+    bottom: 0;
 }
