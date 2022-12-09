@@ -7,7 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import InfoIcon from '@mui/icons-material/Info';
 // import {Timer} from './Timer'
 
-export const Kitchen = () => {
+export const Kitchen = ({setUser}) => {
 
     const [ordersPending, setOrdersPending] = useState([]);
     const [buttonDone, setButtonDone] = useState(true)
@@ -81,7 +81,7 @@ export const Kitchen = () => {
 
     return (
         <section className="backKitchen">
-            <Buttons message='PEDIDOS' />
+            <Buttons message='PEDIDOS' setUser={setUser}/>
             <div className="kitchen">
                 <div className="kitchenButtons">
                     <button onClick={() => getOrders()} className='btnPending'>

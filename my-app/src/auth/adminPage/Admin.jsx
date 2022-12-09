@@ -14,10 +14,10 @@ export const AdminEmployees = () => {
     )
 }
 
-export const AdminInicio = () => {
+export const AdminInicio = ({setUser}) => {
     return (
         <div className='backAdmin'>
-            <ButtonsMenu />
+            <ButtonsMenu setUser={setUser}/>
             <Outlet/>
         </div>
     )
