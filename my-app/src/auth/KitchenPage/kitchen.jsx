@@ -4,24 +4,33 @@ import './kitchen.css'
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
+<<<<<<< HEAD
 
+=======
+import InfoIcon from '@mui/icons-material/Info';
+// import {Timer} from './Timer'
+>>>>>>> 23809bbc2dd9b9b024f5d197ecddf7f0b673a962
 
 export const Kitchen = () => {
 
     const [ordersPending, setOrdersPending] = useState([]);
-  
+    const [buttonDone, setButtonDone] = useState(true)
+    const [infoOrder, setInfoOrder] = useState(false)
+
 
     const getOrders = async () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=pending')
-        const orders=result.data;
-            setOrdersPending(orders.filter((orders => orders.status === 'pending')));
-        
+        const orders = result.data;
+        setOrdersPending(orders.filter((orders => orders.status === 'pending')));
+        setButtonDone(true)
+
     };
 
-    const done =  async () => {
-            const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=done')
-            setOrdersPending(result.data)
-            
+    const done = async () => {
+        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=done')
+        setOrdersPending(result.data)
+        setButtonDone(false)
+
     }
 
     useEffect(() => {
@@ -39,13 +48,38 @@ export const Kitchen = () => {
         const date = new Date();
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
+        let delta = Math.abs(new Date(order.date) - date) / 1000;
+        console.log(delta)
+
+        const days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+
+        const hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+
+        const seconds = Math.floor(delta) % 60;
+
         const orderDone = {
             ...order,
             done: hour,
             status: 'done',
+            time: hours + 'hrs ' + minutes + 'min ' + seconds + 'seg'
         }
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${order.id}`, orderDone)
         getOrders()
+    }
+
+    const info = (item) => {
+       if(item.id === ordersPending.id)
+        if (infoOrder === false ) {
+            setInfoOrder(true)
+        } else {
+            setInfoOrder(false)
+        }
+
     }
     // console.log(orderKitchen, ':::::KITCHEN')
 
@@ -54,10 +88,10 @@ export const Kitchen = () => {
             <Buttons message='PEDIDOS' />
             <div className="kitchen">
                 <div className="kitchenButtons">
-                    <button onClick={()=>getOrders()} className='btnPending'>
+                    <button onClick={() => getOrders()} className='btnPending'>
                         <p>PENDIENTES</p>
                     </button>
-                    <button onClick={()=>done()} className='btnReady' >
+                    <button onClick={() => done()} className='btnReady' >
                         <p>LISTOS</p>
                     </button>
                 </div>
@@ -67,18 +101,30 @@ export const Kitchen = () => {
                             <section className="headerOrder">
                                 <button key={item.id} onClick={() => deleteOrder(item)}> <CloseIcon /></button>
                                 <p> {item.name}</p>
-                                <p>{item.hour}</p>
+                                <p>Llego:{item.hour}</p>
                             </section>
                             <div>
                                 {item.items.map((element) =>
                                     <div className="OrderItem" key={element.id}>
                                         <p> {element.qty} </p>
                                         <p> {element.product.product}</p>
-
                                     </div>
                                 )}
                             </div>
+<<<<<<< HEAD
                             <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button>
+=======
+                            {buttonDone ? <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button> :
+                                <InfoIcon onClick={() => info(item)}></InfoIcon>}
+                                {infoOrder ? <div className="orderTime">
+                                <p>{item.time}</p>
+                                <p>Llegó: {item.hour}</p>
+                                <p>Finalizó: {item.done}</p>
+                            </div>
+                                : null
+                            
+                            }
+>>>>>>> 23809bbc2dd9b9b024f5d197ecddf7f0b673a962
                         </div>
                     )}
                 </section>
