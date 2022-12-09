@@ -4,14 +4,10 @@ import './kitchen.css'
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
-<<<<<<< HEAD
-
-=======
 import InfoIcon from '@mui/icons-material/Info';
 // import {Timer} from './Timer'
->>>>>>> 23809bbc2dd9b9b024f5d197ecddf7f0b673a962
 
-export const Kitchen = () => {
+export const Kitchen = ({setUser}) => {
 
     const [ordersPending, setOrdersPending] = useState([]);
     const [buttonDone, setButtonDone] = useState(true)
@@ -85,7 +81,7 @@ export const Kitchen = () => {
 
     return (
         <section className="backKitchen">
-            <Buttons message='PEDIDOS' />
+            <Buttons message='PEDIDOS' setUser={setUser}/>
             <div className="kitchen">
                 <div className="kitchenButtons">
                     <button onClick={() => getOrders()} className='btnPending'>
@@ -111,9 +107,6 @@ export const Kitchen = () => {
                                     </div>
                                 )}
                             </div>
-<<<<<<< HEAD
-                            <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button>
-=======
                             {buttonDone ? <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button> :
                                 <InfoIcon onClick={() => info(item)}></InfoIcon>}
                                 {infoOrder ? <div className="orderTime">
@@ -124,7 +117,6 @@ export const Kitchen = () => {
                                 : null
                             
                             }
->>>>>>> 23809bbc2dd9b9b024f5d197ecddf7f0b673a962
                         </div>
                     )}
                 </section>
