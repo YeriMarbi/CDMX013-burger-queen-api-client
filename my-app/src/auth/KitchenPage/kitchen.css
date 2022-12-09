@@ -125,15 +125,17 @@
     text-align: center;
 }
 
-.infoBtn {
+
+.infoBtnKitchen {
     position: absolute;
     bottom: 0;
     right: 0;
 }
-.allTimes{
+
+.allTimes {
     display: flex;
     flex-direction: row;
-    margin-top:-3vh;
-  
+    margin-top: -3vh;
+padding-bottom: 1.5vh;
     text-align: center;
 }

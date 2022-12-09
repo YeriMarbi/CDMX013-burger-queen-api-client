@@ -45,7 +45,6 @@ export const Kitchen = () => {
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
         let delta = Math.abs(new Date(order.date) - date) / 1000;
-        console.log(delta)
 
         const days = Math.floor(delta / 86400);
         delta -= days * 86400;
@@ -69,11 +68,8 @@ export const Kitchen = () => {
     }
 
     const info = (item) => {
-        //    if(item.id === ordersPending.id)
         setInfoOrder(!infoOrder)
-
     }
-    // console.log(orderKitchen, ':::::KITCHEN')
 
     return (
         <section className="backKitchen">
@@ -104,7 +100,7 @@ export const Kitchen = () => {
                                 )}
                             </div>
                             {buttonDone ? <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button> :
-                                <InfoIcon onClick={() => info(item)}></InfoIcon>}
+                                <InfoIcon  onClick={() => info(item)}></InfoIcon>}
                             {infoOrder ? <Info item={item} /> : null}
                             
                         </div>
