@@ -8,7 +8,7 @@ import { MenuBQ } from "./MenuBQ";
 import { Buttons } from "./Buttons";
 
 
-export const Waiter = () => {
+export const Waiter = ({setUser}) => {
     const [productsOrder, setProductsOrder] = useState([])
     const [currentMenu, setCurrentMenu] = useState('Desayuno');
     const [client, setClient] = useState("");
@@ -101,7 +101,7 @@ export const Waiter = () => {
 
     return (
         <section className='waiterView'>
-            <Buttons message='NUEVA ORDEN'/>
+            <Buttons message='NUEVA ORDEN' setUser={setUser}/>
             <div className='menu'>
                 <section>
                     <button className='btnGray' onClick={breakfastMenu}>DESAYUNO</button>

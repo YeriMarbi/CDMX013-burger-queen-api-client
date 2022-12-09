@@ -7,11 +7,12 @@ import Logo from "../auth/elements/Logo"
 import MessageError from "./MessageError"
 
 
-const Welcome = () => {    
+const Welcome = (props) => {    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorInput, setError] = useState(false);
     const [message, setMessage] = useState(false);
+    const {setUser} = props;
 
     const navigate = useNavigate();
 
@@ -38,12 +39,15 @@ const Welcome = () => {
 
                         if (element.area === 'Administrador') {
                             navigate('admin')
+                            setUser(true)
                         }
                         if (element.area === 'Cocina') {
                             navigate('kitchen')
+                            setUser(true)
                         }
                         if (element.area === 'Meserx') {
                             navigate('waiter')
+                            setUser(true)
                         }
                     } else {
                         setMessage(true)
