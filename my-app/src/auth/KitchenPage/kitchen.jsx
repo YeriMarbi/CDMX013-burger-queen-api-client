@@ -2,17 +2,13 @@ import { Buttons } from "../waiterPage/Buttons"
 import axios from "axios"
 import './kitchen.css'
 import { useEffect, useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
-import CheckIcon from '@mui/icons-material/Check';
-import InfoIcon from '@mui/icons-material/Info';
-// import {Timer} from './Timer'
+import PendingItem from "./PendingItem";
+
 
 export const Kitchen = ({setUser}) => {
 
     const [ordersPending, setOrdersPending] = useState([]);
     const [buttonDone, setButtonDone] = useState(true)
-    const [infoOrder, setInfoOrder] = useState(false)
-
 
     const getOrders = async () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=pending')
@@ -45,7 +41,6 @@ export const Kitchen = ({setUser}) => {
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
         let delta = Math.abs(new Date(order.date) - date) / 1000;
-        console.log(delta)
 
         const days = Math.floor(delta / 86400);
         delta -= days * 86400;
@@ -68,17 +63,6 @@ export const Kitchen = ({setUser}) => {
         getOrders()
     }
 
-    const info = (item) => {
-       if(item.id === ordersPending.id)
-        if (infoOrder === false ) {
-            setInfoOrder(true)
-        } else {
-            setInfoOrder(false)
-        }
-
-    }
-    // console.log(orderKitchen, ':::::KITCHEN')
-
     return (
         <section className="backKitchen">
             <Buttons message='PEDIDOS' setUser={setUser}/>
@@ -92,32 +76,7 @@ export const Kitchen = ({setUser}) => {
                     </button>
                 </div>
                 <section className="orders">
-                    {ordersPending.length > 0 && ordersPending.map((item) =>
-                        <div className='kitchenTicket' key={item.id} >
-                            <section className="headerOrder">
-                                <button key={item.id} onClick={() => deleteOrder(item)}> <CloseIcon /></button>
-                                <p> {item.name}</p>
-                                <p>Llego:{item.hour}</p>
-                            </section>
-                            <div>
-                                {item.items.map((element) =>
-                                    <div className="OrderItem" key={element.id}>
-                                        <p> {element.qty} </p>
-                                        <p> {element.product.product}</p>
-                                    </div>
-                                )}
-                            </div>
-                            {buttonDone ? <button className='done' key={item.id} onClick={() => addKeyProducts(item)}><CheckIcon className='checkIcon' /></button> :
-                                <InfoIcon onClick={() => info(item)}></InfoIcon>}
-                                {infoOrder ? <div className="orderTime">
-                                <p>{item.time}</p>
-                                <p>Llegó: {item.hour}</p>
-                                <p>Finalizó: {item.done}</p>
-                            </div>
-                                : null
-                            
-                            }
-                        </div>
+                    {ordersPending.length > 0 && ordersPending.map((item) => <PendingItem item={item} deleteOrder={deleteOrder} buttonDone={buttonDone} addKeyProducts={addKeyProducts} />
                     )}
                 </section>
             </div>
@@ -125,3 +84,4 @@ export const Kitchen = ({setUser}) => {
     )
 
 }
+

@@ -12,7 +12,6 @@
     grid-template-columns: 27vw 72vw;
     padding: 2vw;
     position: fixed;
-
 }
 
 .kitchen {
@@ -65,12 +64,11 @@
     border-radius: 1vw;
     border: 0.5vh solid #EAAC40;
     position: relative;
-    padding-bottom: 20vh;
+    padding-bottom: 5vh;
 }
 
 .kitchenTicket p {
     color: #343240;
-
 }
 
 .headerOrder {
@@ -112,7 +110,7 @@
     background: none;
 }
 
-.done{
+.done {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -121,7 +119,27 @@
     padding: 1vh;
 }
 
-.orderTime{
+.orderTime {
     position: absolute;
     bottom: 0;
+    text-align: center;
+    background-color: #eaac408d;
+ 
+}
+
+
+.infoBtnKitchen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: none;
+    z-index:1;
+}
+
+.allTimes {
+    display: flex;
+    flex-direction: row;
+    margin-top: -3vh;
+    padding-bottom: 1.5vh;
+    text-align: center;
 }
