@@ -7,7 +7,7 @@ export const Buttons = ({message, setUser}) => {
     const logOut = () => {
         navigate('/')
         setUser(null)
-    }
+    };
 
     return (
         <div className='newOrder'>
@@ -16,4 +16,4 @@ export const Buttons = ({message, setUser}) => {
             <button className='btnExit' onClick={logOut}>SALIR</button>
         </div>
     )
-}
+};

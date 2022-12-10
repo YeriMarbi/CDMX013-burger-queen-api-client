@@ -1,14 +1,13 @@
-import axios from 'axios'
 import * as React from 'react';
-import "./admin.css";
 import { useState, useEffect } from 'react';
+import "./admin.css";
+import axios from 'axios'
 import DataTable from 'react-data-table-component'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
-import Modal from '../elements/Modal.jsx'
-import MessageError from '../../noauth/MessageError';
-// import { ProductsTable } from './ProductsTable';
+import { Modal } from '../elements/Modal.jsx'
+import { MessageError } from '../../noauth/MessageError';
 
 export const AdminTable = ({ modified }) => {
 
@@ -17,8 +16,7 @@ export const AdminTable = ({ modified }) => {
         area: '',
         email: '',
         password: ''
-    })
-
+    });
     const [modal, setModal] = useState(false);
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState({
@@ -26,43 +24,33 @@ export const AdminTable = ({ modified }) => {
         area: '',
         email: '',
         password: '',
-    })
+    });
     const [edit, setEdit] = useState('');
     const [deleteUser, setDeleteUser] = useState(null)
     const [errorInput, setError] = useState(false);
-    // const [message, setMessage] = useState(false);
 
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
     const editRow = (row) => {
         setSelectedUser(row)
         setEdit(row.id)
-    }
+    };
+
     const saveData = () => {
         setEdit('')
         editData(selectedUser)
-    }
+    };
 
     const handleInputChange = (e) => {
-
-        const { name, value} = e.target
-
+        const { name, value } = e.target
         setSelectedUser((prevState) => ({ ...prevState, [name]: value }))
-    }
+    };
 
-    // const getData = () => {
-    //     axios.get(URL).then(result => {
-    //         const data = result.data;
-    //         // console.log(data);
-    //         setUsers(data);
-    //     })
-    // };
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
         console.log(datafinal)
         getData()
-
-    }
+    };
 
     const deleteData = async () => {
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${deleteUser.id}`, deleteUser)
@@ -78,10 +66,8 @@ export const AdminTable = ({ modified }) => {
 
     const handleData = (e) => {
         const { name, value } = e.target
-
         setData((prevState) => ({ ...prevState, [name]: value }))
-       
-    }
+    };
 
 
     const handleApi = (e) => {
@@ -107,10 +93,9 @@ export const AdminTable = ({ modified }) => {
                         password: '',
                     })
                 })
-
             setError(false)
         }
-    }
+    };
 
     useEffect(() => {
         getData()
@@ -124,7 +109,8 @@ export const AdminTable = ({ modified }) => {
 
     const closeModal = () => {
         setModal(false);
-    }
+    };
+
     const columns = [
         {
             name: 'NOMBRE',
@@ -165,7 +151,8 @@ export const AdminTable = ({ modified }) => {
             selector: row => <DeleteIcon onClick={() => showModal(row)}
             >Eliminar</DeleteIcon>
         },
-    ]
+    ];
+
     return (<>
         <div className='employee'>
             <input name="name" value={data.name} onChange={handleData} placeholder='Nombre' className='inputAdm'></input>
@@ -176,18 +163,10 @@ export const AdminTable = ({ modified }) => {
         </div>
         {errorInput && <MessageError message='Llena todos los campos' />}
         <div className='Table'>
-            <DataTable
-                columns={columns}
-                data={users}
-            />
-            {
-                modal && <Modal
-                    modalFunction={deleteData}
-                    closeFunction={closeModal}
-                    message='¿Deseas eliminar este empleado?' />
-            }
+            <DataTable columns={columns} data={users} />
+            {modal && <Modal modalFunction={deleteData} closeFunction={closeModal} message='¿Deseas eliminar este empleado?' />}
         </div>
     </>
     )
-}
+};
 

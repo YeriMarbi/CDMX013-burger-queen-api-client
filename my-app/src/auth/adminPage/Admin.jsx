@@ -5,14 +5,13 @@ import { ButtonsMenu } from './ButtonsMenu';
 import { ProductsTable } from './ProductsTable';
 import { Outlet } from 'react-router';
 
-
 export const AdminEmployees = () => {
     return (
         <div className='backAdmin'>
             <section><AdminTable/></section>
         </div>
     )
-}
+};
 
 export const AdminInicio = ({setUser}) => {
     return (
@@ -21,7 +20,7 @@ export const AdminInicio = ({setUser}) => {
             <Outlet/>
         </div>
     )
-}
+};
 
 export const AdminProducts = () => {
     return (
@@ -29,4 +28,4 @@ export const AdminProducts = () => {
             <section><ProductsTable /></section>
         </div>
     )
-}
+};

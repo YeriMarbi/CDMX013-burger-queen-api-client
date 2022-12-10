@@ -1,7 +1,7 @@
 import ReportProblemRoundedIcon from '@mui/icons-material/ReportProblemRounded';
 import { pink } from '@mui/material/colors';
 
-const MessageError = ({ message }) => {
+ export const MessageError = ({ message }) => {
     return (
         <div className='error'>
             <p><ReportProblemRoundedIcon sx={{ color: pink[500] }}
@@ -9,6 +9,4 @@ const MessageError = ({ message }) => {
                 <b>Error: </b>{message}</p>
         </div>
     )
-}
-
-export default MessageError
+};
