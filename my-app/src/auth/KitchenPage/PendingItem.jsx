@@ -12,11 +12,11 @@ export default function PendingItem({ item, deleteOrder, buttonDone, addKeyProdu
     const info = () => setInfoOrder(!infoOrder)
 
     return (
-        <div className='kitchenTicket' key={item.id} >
-            <section className="headerOrder">
+        <div style={{ border: item.status === 'pending' ? "0.5vh solid #EAAC40" : "0.5vh solid #087711" }}  className='kitchenTicket' key={item.id}> 
+            <section style={{ background: item.status === 'pending' ? "#EAAC40" : "#087711" }}className="headerOrder">
                 <button key={item.id} onClick={() => deleteOrder(item)}> <CloseIcon /></button>
                 <p> {item.name}</p>
-                <p>Llego:{item.hour}</p>
+               {item.status==='pending'?<p>Llego:{item.hour}</p>:null} 
             </section>
             <div>
                 {item.items.map((element) =>
