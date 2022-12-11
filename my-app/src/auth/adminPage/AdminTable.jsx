@@ -48,7 +48,6 @@ export const AdminTable = ({ modified }) => {
 
     const editData = async (datafinal) => {
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/users/${datafinal.id}`, datafinal)
-        console.log(datafinal)
         getData()
     };
 
@@ -102,7 +101,6 @@ export const AdminTable = ({ modified }) => {
     }, []);
 
     const showModal = (user) => {
-        console.log(user);
         setModal(true);
         setDeleteUser(user)
     };

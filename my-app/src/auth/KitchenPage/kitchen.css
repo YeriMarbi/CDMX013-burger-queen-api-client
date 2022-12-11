@@ -66,6 +66,9 @@
     position: relative;
     padding-bottom: 5vh;
 }
+/* .kitchenTicketDone {
+    border: 0.5vh solid #06510c;
+} */
 
 .kitchenTicket p {
     color: #343240;
@@ -124,7 +127,6 @@
     bottom: 0;
     text-align: center;
     background-color: #eaac408d;
- 
 }
 
 
