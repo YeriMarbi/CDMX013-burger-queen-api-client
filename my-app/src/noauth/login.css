@@ -15,7 +15,8 @@ body {
     }
 
     h1,
-    p, h3 {
+    p,
+    h3 {
         color: #F8C365;
         font-family: 'Inter', sans-serif;
     }
@@ -58,9 +59,10 @@ body {
         font-size: 1.5em;
         margin: 0 0 2vh 0;
     }
+
     .welcome input:focus {
         border: 0.5vw solid #c87e0f;
-      }
+    }
 
     .welcome p {
         font-size: 1.2em;
@@ -70,18 +72,21 @@ body {
     .welcome section {
         margin: 0 0 0 75vw;
     }
-    .error{
-       background-color: rgba(184, 138, 144, 0.696);
-       border-radius: 0.1vw;
-       text-align: center;
-       padding: 1.5vh;
-       margin: 0 0 1.5vh 0vh;
+
+    .error {
+        background-color: rgba(184, 138, 144, 0.696);
+        border-radius: 0.1vw;
+        text-align: center;
+        padding: 1.5vh;
+        margin: 0 0 1.5vh 0vh;
     }
+
     .error p {
         color: #980f3f;
     }
-    .iconoError{
+
+    .iconoError {
         margin: 0 1vw -0.6vh 0;
     }
-   
+
 }

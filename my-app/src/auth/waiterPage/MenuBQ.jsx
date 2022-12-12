@@ -23,7 +23,6 @@ export const MenuBQ = ({ currentMenu, addProductOrder }) => {
         getMainMenu()
     }, []);
     
-
     return (
         <div className="container-menu">
           {currentMenu === "Desayuno"

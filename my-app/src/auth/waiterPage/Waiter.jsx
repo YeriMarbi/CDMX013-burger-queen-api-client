@@ -1,14 +1,12 @@
-
-import './waiter.css'
 import { useState } from 'react';
+import './waiter.css'
 import axios from "axios";
 import { Ticket } from "./Ticket";
-import Modal from '../elements/Modal.jsx'
+import { Modal } from '../elements/Modal.jsx'
 import { MenuBQ } from "./MenuBQ";
 import { Buttons } from "./Buttons";
 
-
-export const Waiter = () => {
+export const Waiter = ({ setUser }) => {
     const [productsOrder, setProductsOrder] = useState([])
     const [currentMenu, setCurrentMenu] = useState('Desayuno');
     const [client, setClient] = useState("");
@@ -49,59 +47,55 @@ export const Waiter = () => {
             const newCurrentProduct = state.map((item) => {
                 if (item.product.id === product.id) {
                     return { product, qty: currentProduct.qty - 1 }
-                } else {
-                    return item
                 }
+                return item
             });
             return newCurrentProduct
         })
-    }
+    };
 
     const deleteProduct = (product) => {
         const filterProducts = productsOrder.filter((item) => item.product.id !== product.id)
         setProductsOrder(filterProducts)
-    }
+    };
 
     const totalPrice = () => {
         return productsOrder.reduce((prev, item) => prev + item.qty * item.product.price, 0);
-    }
+    };
 
     const handleApi = () => {
         const date = new Date();
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-
         const clientOrder = {
             name: client,
             hour: hour,
+            date: date,
             items: productsOrder,
-            total: totalPrice()
-        }
-        console.log(clientOrder)
+            total: totalPrice(),
+            status: 'pending'
+        };
+
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder', clientOrder)
         clearOrder()
-        setClient('')
         setModal(false);
-    }
-
+    };
 
     const clearOrder = () => {
         setProductsOrder([]);
         setClient('')
-    }
+    };
 
     const closeModal = () => {
         setModal(false);
-    }
-
-    const showModal = (user) => {
-        setModal(true);
-
     };
 
-    console.log(productsOrder, '::::::::::.');
+    const showModal = () => {
+        setModal(true);
+    };
+
     return (
         <section className='waiterView'>
-            <Buttons/>
+            <Buttons message='NUEVA ORDEN' setUser={setUser} />
             <div className='menu'>
                 <section>
                     <button className='btnGray' onClick={breakfastMenu}>DESAYUNO</button>
@@ -122,14 +116,9 @@ export const Waiter = () => {
                 <section className="btnOrder">
                     <button className='btnRed' onClick={clearOrder}>CANCELAR</button>
                     <button className='btnGreen' onClick={showModal}>ENVIAR</button>
-                    {modal && <Modal
-                        modalFunction={handleApi}
-                        closeFunction={closeModal}
-                        message='¿Deseas enviar esta orden?'
-                    />
-                    }
+                    {modal && <Modal modalFunction={handleApi} closeFunction={closeModal} message='¿Deseas enviar esta orden?' />}
                 </section>
             </div>
         </section>
     )
-}
+};
