@@ -22,3 +22,10 @@ describe('Welcome component', () => {
     })
 
 });
+
+describe('Inputs Welcome', () => {
+test('cuando la informacion es invalida', () => {
+    render(<Welcome />, { wrapper: BrowserRouter })
+    
+})
+});

@@ -1,18 +1,17 @@
 import React from 'react';
-import "./login.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import "./login.css";
 import axios from "axios";
 import Logo from "../auth/elements/Logo"
-import MessageError from "./MessageError"
+import { MessageError } from "./MessageError"
 
-
-const Welcome = (props) => {    
+export const Welcome = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorInput, setError] = useState(false);
     const [message, setMessage] = useState(false);
-    const {setUser} = props;
+    const { setUser } = props;
 
     const navigate = useNavigate();
 
@@ -22,10 +21,10 @@ const Welcome = (props) => {
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-  
+
     const handleApi = (e) => {
         e.preventDefault()
-      
+
         if (email === '' || password === '') {
             setMessage(false)
             setError(true)
@@ -49,39 +48,27 @@ const Welcome = (props) => {
                             navigate('waiter')
                             setUser(true)
                         }
-                    } else {
+                    } 
                         setMessage(true)
                         setError(true)
-                    }
+                    
                 });
-            })
-    }
-    }
+            });
+        };
+    };
+
     return <div data-testid='welcome' className='welcome'>
         <section>
             <h1>Bienvenidx</h1>
-            {errorInput &&
-                <MessageError 
-                message={message ? 'Credenciales Invalidas' : 'Rellena los campos'} 
-                />
-            }
+            {errorInput && <MessageError message={message ? 'Credenciales Invalidas' : 'Rellena los campos'} />}
             <p>Correo Electrónico</p>
-            <input
-                value={email}
-                onChange={handleEmail}
-                type={'email'} />
+            <input value={email} onChange={handleEmail} type={'email'} />
             <p>Contraseña</p>
-            <input
-                value={password}
-                onChange={handlePassword}
-                type={'password'} />
+            <input value={password} onChange={handlePassword} type={'password'} />
             <br />
             <button onClick={handleApi} className='buttonLogin'>Iniciar Sesión</button>
             <br />
-
         </section>
         <Logo />
     </div>
 };
-
-export default Welcome

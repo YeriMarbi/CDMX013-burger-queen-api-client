@@ -1,14 +1,15 @@
-import { Buttons } from "../waiterPage/Buttons"
-import axios from "axios"
-import './kitchen.css'
+import { Buttons } from "../waiterPage/Buttons";
+import axios from "axios";
+import './kitchen.css';
 import { useEffect, useState } from "react";
 import PendingItem from "./PendingItem";
+import { deepPurple } from "@mui/material/colors";
 
 
 export const Kitchen = ({setUser}) => {
 
     const [ordersPending, setOrdersPending] = useState([]);
-    const [buttonDone, setButtonDone] = useState(true)
+    const [buttonDone, setButtonDone] = useState(true);
 
     const getOrders = async () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=pending')
@@ -22,8 +23,7 @@ export const Kitchen = ({setUser}) => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=done')
         setOrdersPending(result.data)
         setButtonDone(false)
-
-    }
+    };
 
     useEffect(() => {
         getOrders()
@@ -32,11 +32,16 @@ export const Kitchen = ({setUser}) => {
 
     const deleteOrder = async (item) => {
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
+        console.log(item)
+        if(item.status==='done'){
+            done()
+        }else{
         getOrders()
     }
+    };
 
     const addKeyProducts = async (order) => {
-        console.log(order, ':::::::::ORDER')
+     
         const date = new Date();
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
@@ -61,7 +66,7 @@ export const Kitchen = ({setUser}) => {
         }
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${order.id}`, orderDone)
         getOrders()
-    }
+    };
 
     return (
         <section className="backKitchen">
@@ -76,12 +81,10 @@ export const Kitchen = ({setUser}) => {
                     </button>
                 </div>
                 <section className="orders">
-                    {ordersPending.length > 0 && ordersPending.map((item) => <PendingItem item={item} deleteOrder={deleteOrder} buttonDone={buttonDone} addKeyProducts={addKeyProducts} />
-                    )}
+                    {ordersPending.length > 0 && ordersPending.map((item) => <PendingItem item={item} deleteOrder={deleteOrder} buttonDone={buttonDone} addKeyProducts={addKeyProducts} /> )}
                 </section>
             </div>
         </section>
     )
-
-}
+};
 

@@ -1,7 +1,7 @@
+import { useNavigate} from 'react-router-dom';
 import React from 'react';
 import "./admin.css";
 import Logo from '../elements/Logo.jsx'
-import { useNavigate} from 'react-router-dom';
 
 export const ButtonsMenu = ({setUser}) => {
     const navigate = useNavigate();
@@ -17,7 +17,6 @@ export const ButtonsMenu = ({setUser}) => {
     const productsButton = () => {
         navigate('products')
     }
-
 
         return (
             <section className='menuBtn'>

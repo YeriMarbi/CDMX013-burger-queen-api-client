@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 import "./productsTable.css"
+import axios from "axios"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import Modal from '../elements/Modal.jsx';
-import MessageError from '../../noauth/MessageError';
-// import { useNavigate } from 'react-router-dom';
+import { Modal } from '../elements/Modal.jsx';
+import { MessageError } from '../../noauth/MessageError';
 import { Link } from 'react-router-dom';
 
 export const ProductsTable = () => {
@@ -13,23 +12,19 @@ export const ProductsTable = () => {
     const [modal, setModal] = useState(false);
     const [deleteProduct, setDeleteProduct] = useState(null)
     const [errorInput, setError] = useState(false);
-
-    const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/Products'
-
     const [data, setData] = useState({
         product: '',
         price: '',
         menu: '',
-    })
+    });
 
     const handleInputChange = (e) => {
-
         const { name, value } = e.target
         setData((prevState) => ({ ...prevState, [name]: value }))
-    }
+    };
 
     const getProductsData = async () => {
-        const result = await axios.get(URL)
+        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products')
         setProducts(result.data);
     };
 
@@ -55,10 +50,9 @@ export const ProductsTable = () => {
                         menu: '',
                     })
                 })
-                setError(false)
+            setError(false)
         }
-
-    }
+    };
 
     const showModal = (user) => {
         setModal(true);
@@ -67,16 +61,14 @@ export const ProductsTable = () => {
 
     const closeModal = () => {
         setModal(false);
-    }
+    };
 
     const deleteData = async () => {
-        console.log(deleteProduct);
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/Products/${deleteProduct.id}`, deleteProduct)
         setModal(false)
         getProductsData()
-    }
+    };
 
-    // const navigate = useNavigate();
     return (
         <div className="productsTable">
             <div className='employee'>
@@ -86,7 +78,6 @@ export const ProductsTable = () => {
                 <button id="addEmployee" onClick={handleApi}>AGREGAR</button>
             </div>
             {errorInput && <MessageError message='Llena todos los campos' />}
-            {/* <h3>Productos</h3> */}
             <table id='products'>
                 <tbody>
                     <tr>
@@ -107,13 +98,7 @@ export const ProductsTable = () => {
                     )};
                 </tbody>
             </table>
-            {
-                modal && <Modal
-                    modalFunction={deleteData}
-                    closeFunction={closeModal} 
-                    message='¿Deseas eliminar este producto?'
-                    />
-            }
+            { modal && <Modal modalFunction={deleteData} closeFunction={closeModal} message='¿Deseas eliminar este producto?' /> }
         </div>
     )
-}
+};
