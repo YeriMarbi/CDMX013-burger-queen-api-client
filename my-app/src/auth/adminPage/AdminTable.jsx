@@ -9,7 +9,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { Modal } from '../elements/Modal.jsx'
 import { MessageError } from '../../noauth/MessageError';
 
-export const AdminTable = ({ modified }) => {
+export const AdminTable = () => {
 
     const [data, setData] = useState({
         name: '',
@@ -32,13 +32,13 @@ export const AdminTable = ({ modified }) => {
     const URL = 'https://637265f4025414c6370eb684.mockapi.io/api/bq/users'
 
     const editRow = (row) => {
-        setSelectedUser(row)
+        setSelectedUser(row) //
         setEdit(row.id)
     };
 
     const saveData = () => {
         setEdit('')
-        editData(selectedUser)
+        editData(selectedUser) //adentro
     };
 
     const handleInputChange = (e) => {
@@ -67,7 +67,6 @@ export const AdminTable = ({ modified }) => {
         const { name, value } = e.target
         setData((prevState) => ({ ...prevState, [name]: value }))
     };
-
 
     const handleApi = (e) => {
         e.preventDefault()

@@ -3,6 +3,7 @@ import axios from "axios";
 import './kitchen.css';
 import { useEffect, useState } from "react";
 import PendingItem from "./PendingItem";
+import { deepPurple } from "@mui/material/colors";
 
 
 export const Kitchen = ({setUser}) => {
@@ -31,7 +32,12 @@ export const Kitchen = ({setUser}) => {
 
     const deleteOrder = async (item) => {
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
+        console.log(item)
+        if(item.status==='done'){
+            done()
+        }else{
         getOrders()
+    }
     };
 
     const addKeyProducts = async (order) => {
